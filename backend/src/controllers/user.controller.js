@@ -85,4 +85,3 @@ export const getAllUserWithoutPass = async (req, res, next) => {
     next(err);
   }
 };
-

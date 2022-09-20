@@ -56,3 +56,11 @@ model RefreshToken {
   updatedAt   DateTime @updatedAt
   User        User     @relation(fields: [userId], references: [id])
 }
+
+model Calendar {
+  id          String @unique
+  title       String
+  description String
+  label       String
+  day         Int
+}

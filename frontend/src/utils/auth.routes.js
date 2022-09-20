@@ -12,5 +12,5 @@ export const logout = async (data) => {
   localStorage.removeItem("accessToken");
   await api.post("/api/auth/revokedRefreshTokens", data);
 
-  location.replace("/login");
+  window.location.replace("/login");
 };

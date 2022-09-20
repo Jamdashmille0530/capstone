@@ -4,6 +4,7 @@ import cors from "cors";
 
 import userRoute from "./routes/users.routes";
 import authRoute from "./routes/auth.routes";
+import calendarRoute from "./routes/calendar.routes";
 
 const app = express();
 
@@ -14,6 +15,7 @@ const server = async () => {
   // Routes
   app.use("/api/user", userRoute);
   app.use("/api/auth", authRoute);
+  app.use("/api/calendar", calendarRoute);
 
   // Testing
   app.get("/api/healthchecker", (_, res) => {
