@@ -2,12 +2,17 @@ import React, { useContext } from "react";
 import * as Style from "./styles";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import { Link } from "react-router-dom";
 import Lao1 from "assets/lao1.PNG";
 import Lao2 from "assets/lao2.PNG";
 import Lao3 from "assets/lao3.PNG";
 import Lao4 from "assets/lao4.PNG";
+import Apply from "assets/apply.png";
+import Submit from "assets/submit.png";
+import Fill from "assets/fillout.png";
+import Signup from "assets/applyRegister_Black.png";
 import AuthContext from "context/AuthProvider";
+
 import { getAllUserWithoutPass } from "utils/user.route";
 
 const Profile = () => {
@@ -67,7 +72,7 @@ const Profile = () => {
 
       <div>
         <h1 className="text-2xl font-bold text-center text-black mb-8 -mt-20.2 border-solid border-2 p-4 border-green-900">
-          How to Apply 
+          How to Apply
         </h1>
         <div className="mx-36 mb-32">
           <tr>
@@ -75,27 +80,31 @@ const Profile = () => {
               <h1 className="text-5xl font-bold text-green-700">01</h1>
               <h1 className="text-2xl font-bold text-green-700">Apply</h1>
               <p className="mb-10">
-                Click on the apply button to start the application process
+                Click on the Sign Up button to start the application process.
               </p>
             </td>
             <td>
               <br></br>
-              <img src={Lao1} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
+              <img src={Apply} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
             </td>
+            <Link to="/signuptwo" >
+              <td>
+                <text className="text-5xl ml-7 font-bold text-green-700">
+                  02
+                </text>
 
-            <td>
-              <text className="text-5xl ml-7 font-bold text-green-700">02</text>
-              <h1 className="text-2xl ml-7 font-bold text-green-700">
-                Log In/ Sign In{" "}
-              </h1>
-              <p className="mb-10 ml-7">
-                log in if you already have an account.<br></br>
-                If you dont have an account, sign up to create one.
-              </p>
-            </td>
+                <h1 className="text-2xl ml-7 font-bold text-green-700">
+                  Sign Up{" "}
+                </h1>
+
+                <p className="mb-10 ml-7">
+                  If you are not yet a scholar, sign up to be one of us.
+                </p>
+              </td>
+            </Link>
             <td>
               <br></br>
-              <img src={Lao1} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
+              <img src={Signup} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
             </td>
           </tr>
 
@@ -110,7 +119,7 @@ const Profile = () => {
             </td>
             <td>
               <br></br>
-              <img src={Lao1} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
+              <img src={Fill} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
             </td>
             <td>
               <h1 className="text-5xl ml-7 font-bold text-green-700">04</h1>
@@ -122,7 +131,7 @@ const Profile = () => {
             </td>
             <td>
               <br></br>
-              <img src={Lao1} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
+              <img src={Submit} className=" w-24 h-26 rounded-md mx-6 -mt-11" />
             </td>
           </tr>
         </div>
@@ -221,7 +230,7 @@ const Profile = () => {
                       Birth Certificate
                     </h1>
 
-                    <p>Photocopy and Original of of PSA</p>
+                    <p>Photocopy and Original Copy of PSA</p>
                   </div>
                 </td>
               </tr>

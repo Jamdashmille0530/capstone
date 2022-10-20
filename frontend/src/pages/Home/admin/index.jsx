@@ -4,7 +4,7 @@ function admin() {
   return (
     <>
       <div className="flex justify-evenly grid-cols-3 pt-6">
-        <Link to="/profile">
+        <Link to="/Scholar">
           <button className=" border-green-900 border-2 border-solid rounded-xl p-4 text-7xl">
             Scholar
           </button>

@@ -8,9 +8,9 @@ const Footer = () => {
     <Styles.Wrapper>
       <Styles.Container>
         <Link to="/">
-        <tr>
-          <img src={Logo} className=" w-22 h-20 mx-6 mt-2" />
-        </tr>
+          <tr>
+            <img src={Logo} className=" w-22 h-20 mx-6 mt-2" />
+          </tr>
         </Link>
 
         <tr>

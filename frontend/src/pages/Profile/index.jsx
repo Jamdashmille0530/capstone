@@ -15,7 +15,7 @@ import { useState } from "react";
 import { getUser, me } from "utils/user.route";
 import { useContext } from "react";
 import AuthContext from "context/AuthProvider";
-
+import laovid from "assets/loavid.gif";
 // import Calendar from "react-calendar";
 const Profile = () => {
   const [date, setDate] = useState(new Date());
@@ -43,28 +43,39 @@ const Profile = () => {
                             <h1 className="font-bold">
                               Name: {auth?.lname}, {auth?.fname} {auth?.mname}{" "}
                             </h1>
-                            <h1 className="font-bold">Year: {auth?.year}</h1>
+                            {auth?.role === "SCHOLAR" && (
+                              <h1 className="font-bold">Year: {auth?.year}</h1>
+                            )}
                           </div>
-                          <div className="grid grid-cols-none place-content-center -my-12 text-black">
-                            <h1 className="font-bold">
-                              Program: {auth?.program}{" "}
-                            </h1>
-                            <h1 className="font-bold">
-                              School: {auth?.school}
-                            </h1>
-                          </div>
+                          {auth?.role === "SCHOLAR" && (
+                            <div className="grid grid-cols-none place-content-center -my-12 text-black">
+                              <h1 className="font-bold">
+                                Program: {auth?.program}{" "}
+                              </h1>
+                              <h1 className="font-bold">
+                                School: {auth?.school}
+                              </h1>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <div className="app">
-                      <div className="calendar-container border-2 border-green-700">
-                        {/* <Calendar onChange={setDate} value={date} /> */}
-                        <Calendar />
+                  {auth?.role === "ADMIN" && (
+                    <div className="">
+                      <img src={laovid} />
+                    </div>
+                  )}
+                  {auth?.role === "SCHOLAR" && (
+                    <div>
+                      <div className="app">
+                        <div className="calendar-container border-2 border-green-700">
+                          {/* <Calendar onChange={setDate} value={date} /> */}
+                          <Calendar />
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>

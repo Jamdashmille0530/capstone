@@ -5,6 +5,7 @@ export const loginUser = async (data) =>
     headers: { "Content-Type": "application/json" },
     withCredentials: true,
   });
+ 
 
 // data = {userId: 3af425ca-5ffb-4d7b-9df8-7c51c49085bc}
 export const logout = async (data) => {
