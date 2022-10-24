@@ -69,6 +69,7 @@ const Login = () => {
                 {...register("password")}
               />
             </div>
+
             <div className="flex items-baseline justify-between">
               <button
                 type="submit"

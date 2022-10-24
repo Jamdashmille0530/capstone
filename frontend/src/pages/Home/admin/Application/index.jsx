@@ -1,7 +1,14 @@
 import React from "react";
+import { getAllUserInfo, updateUserRole } from "utils/admin.routes";
 //import .
 
 const Application = () => {
+  const { users, isLoading, mutate } = getAllUserInfo();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(users);
   return (
     <div className="flex flex-col ">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -39,12 +46,6 @@ const Application = () => {
                     className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     email
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    password
                   </th>
                   <th
                     scope="col"
@@ -100,6 +101,10 @@ const Application = () => {
                   >
                     role
                   </th>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  ></th>
                   <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
@@ -162,50 +167,94 @@ const Application = () => {
                   </th>
                 </tr>
               </thead>
-              {/* <tbody>
-                <tr class="border-b">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    1
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Mark
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Otto
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    @mdo
-                  </td>
-                </tr>
-                <tr class="bg-white border-b">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    2
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Jacob
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Thornton
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    @fat
-                  </td>
-                </tr>
-                <tr class="bg-white border-b">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    3
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Larry
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Wild
-                  </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    @twitter
-                  </td>
-                </tr>
-              </tbody> */}
+              <tbody>
+                {users.map((user) => (
+                  <tr class="border-b">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {user.id}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.fname}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.mname}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.lname}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.email}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.address}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.idPicture}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.gradeSlip}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.ncae}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.indigency}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.autobiography}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.pantawidId}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.sketchAddress}
+                    </td>
+                    {/* --------- ROLE-------- */}
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.role}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <button
+                        className="px-6 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
+                        onClick={async () => {
+                          await updateUserRole(user.id, "ADMIN");
+                          mutate();
+                        }}
+                      >
+                        Update
+                      </button>
+                    </td>
+                    {/* --------- ROLE-------- */}
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.createdAt}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.updatedAt}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.bcert}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.ebill}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.tbill}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.wbill}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.program}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.school}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.year}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>
