@@ -1,28 +1,28 @@
-import { Route, Routes } from "react-router-dom";
-import Navbar from "components/Navbar";
-import Home from "pages/Home";
-import Login from "pages/Login";
-import Signup from "pages/Signup";
-import Dashboard from "pages/Dashboard";
-import Profile from "pages/Profile";
-import SignUptwo from "pages/SignUptwo";
-import Chat from "pages/Chat";
-import Footer from "components/Footer";
-import Terms from "pages/Terms";
-import Dashy from "pages/Dashy";
-import Admin from "pages/Home/admin";
-import AdminChat from "pages/Home/admin/adminChat";
-import Application from "pages/Home/admin/Application";
-import Scholar from "pages/Home/admin/Scholar";
+import { Route, Routes } from 'react-router-dom'
+import Navbar from 'components/Navbar'
+import Home from 'pages/Home'
+import Login from 'pages/Login'
+import Signup from 'pages/Signup'
+import Dashboard from 'pages/Dashboard'
+import Profile from 'pages/Profile'
+import SignUptwo from 'pages/SignUptwo'
+import Chat from 'pages/Chat'
+import Footer from 'components/Footer'
+import Terms from 'pages/Terms'
+import Dashy from 'pages/Dashy'
+import Admin from 'pages/Home/admin'
+import AdminChat from 'pages/Home/admin/adminChat'
+import Application from 'pages/Home/admin/Application'
+import Scholar from 'pages/Home/admin/Scholar'
 
-import { SWRConfig } from "swr";
-import { fetcher } from "utils/fetcher";
-import { useContext } from "react";
-import AuthContext from "context/AuthProvider";
-import Protected from "lib/protected";
+import { SWRConfig } from 'swr'
+import { fetcher } from 'utils/fetcher'
+import { useContext } from 'react'
+import AuthContext from 'context/AuthProvider'
+import Protected from 'lib/protected'
 
 function App() {
-  const { auth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext)
   return (
     <SWRConfig
       value={{
@@ -52,7 +52,7 @@ function App() {
           <Route
             path="/admin"
             element={
-              <Protected isLoggedIn={auth?.role === "ADMIN"}>
+              <Protected isLoggedIn={auth?.role === 'ADMIN'}>
                 <Admin />
               </Protected>
             }
@@ -60,7 +60,7 @@ function App() {
           <Route
             path="/adminChat"
             element={
-              <Protected isLoggedIn={auth?.role === "ADMIN"}>
+              <Protected isLoggedIn={auth?.role === 'ADMIN'}>
                 <AdminChat />
               </Protected>
             }
@@ -68,7 +68,7 @@ function App() {
           <Route
             path="/application"
             element={
-              <Protected isLoggedIn={auth?.role === "ADMIN"}>
+              <Protected isLoggedIn={auth?.role === 'ADMIN'}>
                 <Application />
               </Protected>
             }
@@ -76,7 +76,7 @@ function App() {
           <Route
             path="/scholar"
             element={
-              <Protected isLoggedIn={auth?.role === "ADMIN"}>
+              <Protected isLoggedIn={auth?.role === 'ADMIN'}>
                 <Scholar />
               </Protected>
             }
@@ -86,7 +86,7 @@ function App() {
         <Footer />
       </div>
     </SWRConfig>
-  );
+  )
 }
 
-export default App;
+export default App
