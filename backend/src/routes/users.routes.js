@@ -8,7 +8,7 @@ import {
   createUser,
 } from '../controllers/user.controller'
 import { isAuth } from '../middlewares'
-import { uploadImg } from '../services/upload.services'
+import { uploadImg, userFile } from '../services/upload.services'
 import { insertImage, getImage } from '../controllers/image.controller'
 import { validateParamColumns, validateParamUserId } from '../pipes'
 
@@ -26,7 +26,7 @@ router.get('/getAllUserWithoutPass', getAllUserWithoutPass)
  */
 router.put(
   '/image/:column',
-  [validateParamColumns, isAuth, uploadImg],
+  [validateParamColumns, isAuth, userFile, uploadImg],
   insertImage
 )
 
