@@ -74,7 +74,10 @@ export const login = async (req, res, next) => {
       })
     }
 
-    const validPassword = await bcrypt.compare(password, existingUser.password)
+    if (existingUser.password === null)
+      return res.status(403).json({ message: 'This user is not yet verified' })
+
+    const validPassword = bcrypt.compare(password, existingUser.password)
     if (!validPassword) {
       res.status(403).json({
         status: 'failed',

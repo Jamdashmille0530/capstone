@@ -3,13 +3,13 @@ import axios from 'axios'
 import { refreshToken } from './auth.routes'
 
 export const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: process.env.REACT_APP_URL,
 })
 
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response.status !== 401) return
+    if (error.response.status !== 401) return Promise.reject(error)
     await refreshToken()
     return window.location.reload()
   }
