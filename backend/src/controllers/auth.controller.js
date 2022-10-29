@@ -14,6 +14,7 @@ import {
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { hashToken } from '../utils/hashToken'
+import { prisma } from '../utils/db'
 
 export const register = async (req, res, next) => {
   try {
@@ -41,6 +42,7 @@ export const register = async (req, res, next) => {
       lname,
       address,
     })
+
     const jti = uuid4()
     const { accessToken, refreshToken } = generateTokens(user, jti)
     await addRefreshTokenToWhitelist({ jti, refreshToken, userId: user.id })
@@ -77,7 +79,7 @@ export const login = async (req, res, next) => {
     if (existingUser.password === null)
       return res.status(403).json({ message: 'This user is not yet verified' })
 
-    const validPassword = bcrypt.compare(password, existingUser.password)
+    const validPassword = await bcrypt.compare(password, existingUser.password)
     if (!validPassword) {
       res.status(403).json({
         status: 'failed',

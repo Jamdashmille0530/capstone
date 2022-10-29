@@ -1,6 +1,9 @@
 import { prisma } from '../utils/db'
 import bcrypt from 'bcrypt'
 import { findUserById } from '../services/user.services'
+import nodemailer from 'nodemailer'
+import { transporter } from '../utils/transporter'
+import { error } from 'console'
 
 // export const createUser = async (req, res) => {
 //   try {
@@ -54,15 +57,39 @@ export const me = async (req, res, next) => {
   }
 }
 
-export const updateUser = async (req, res, next) => {
+export const acceptApplicant = async (req, res, next) => {
   try {
-    const { email, password } = req.body
-    const hashedPassword = bcrypt.hashSync(password, 12)
+    const { id, email } = req.body
+    const currentYear = new Date().getFullYear()
+    const generatePass = `${currentYear}-${id.split('-')[0]}`
+
+    const hashedPassword = bcrypt.hashSync(generatePass, 12)
 
     const user = await prisma.user.update({
       where: { email },
       data: { password: hashedPassword, role: 'SCHOLAR' },
     })
+
+    transporter.sendMail(
+      {
+        from: 'lao.noreply@gmail.com',
+        to: email,
+        subject: 'Accepted',
+        html: `
+        <b>Congrats!<b>
+        <br/>
+        <p>email: ${email}
+        <p>password: ${generatePass}
+        `,
+      },
+      (error, info) => {
+        if (error) {
+          return res
+            .status(500)
+            .json({ status: 'failed', message: 'Error sending email' })
+        }
+      }
+    )
 
     res.json({
       status: 'success',
@@ -71,6 +98,40 @@ export const updateUser = async (req, res, next) => {
     })
   } catch (err) {
     next(err)
+  }
+}
+
+export const rejectApplicant = async (req, res, next) => {
+  try {
+    const { id, email } = req.body
+    await prisma.refreshToken.deleteMany({ where: { userId: id } })
+    await prisma.user.delete({ where: { id } })
+
+    transporter.sendMail(
+      {
+        from: 'lao.noreply@gmail.com',
+        to: email,
+        subject: 'Rejected',
+        html: `
+        <b>Sorry!<b> 
+        `,
+      },
+      (error, info) => {
+        if (error) {
+          return res.status(500).json({
+            status: 'failed',
+            message: 'Error sending email',
+          })
+        }
+      }
+    )
+
+    res.json({
+      status: 'success',
+      message: 'Successfully delete user',
+    })
+  } catch (error) {
+    next(error)
   }
 }
 

@@ -3,9 +3,10 @@ import {
   me,
   getUser,
   getAllUser,
-  updateUser,
   getAllUserWithoutPass,
   createUser,
+  acceptApplicant,
+  rejectApplicant,
 } from '../controllers/user.controller'
 import { isAuth } from '../middlewares'
 import { uploadImg, userFile } from '../services/upload.services'
@@ -18,7 +19,8 @@ const router = express.Router()
 // router.get("/:id", getUser);
 // router.get("/", getAllUser);
 router.get('/me', isAuth, me)
-router.put('/updateUser', updateUser)
+router.post('/acceptApplicant', acceptApplicant)
+router.post('/rejectApplicant', rejectApplicant)
 router.get('/getAllUserWithoutPass', getAllUserWithoutPass)
 
 /**
