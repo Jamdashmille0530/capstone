@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import GlobalContext from "../context/GlobalContext";
-
+import AuthContext from 'context/AuthProvider'
 export default function Labels() {
+    const { auth } = useContext(AuthContext)
   const { labels, updateLabel } = useContext(GlobalContext);
   return (
+    <>
+    {auth?.role === 'ADMIN' && (
     <React.Fragment>
+       
       <p className="text-gray-500 font-bold mt-10">Label</p>
       {labels.map(({ label: lbl, checked }, idx) => (
         <label key={idx} className="items-center mt-3 block">
@@ -20,5 +24,7 @@ export default function Labels() {
         </label>
       ))}
     </React.Fragment>
+    )}
+    </>
   );
 }

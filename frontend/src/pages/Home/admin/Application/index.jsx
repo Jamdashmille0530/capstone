@@ -274,6 +274,7 @@ const Application = () => {
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
                           await acceptApplicant(user.id, user.email)
+                          alert('Accepted, sent to email')
                         }}
                       >
                         Accept
@@ -281,7 +282,9 @@ const Application = () => {
                       <button
                         className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-red-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
+                         
                           await rejectApplicant(user.id, user.email)
+                           alert('Rejected, sent to email')
                         }}
                       >
                         Reject
