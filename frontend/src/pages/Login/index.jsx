@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo2 from 'assets/logolao.png'
 import { useForm } from 'react-hook-form'
 import AuthContext from 'context/AuthProvider'
@@ -26,21 +26,30 @@ const Login = () => {
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
-  const response = (resp) => {
-    console.log(resp)
-  }
+  // const response = (resp) => {
+  //   console.log(resp)
+  // }
+
+  // useEffect(() => {
+  //   google.accounts.id.initialize({
+  //     client_id: 'CLIENT_ID',
+  //     callback: response,
+  //   })
+
+  //   google.accounts.id.renderButton(document.getElementById('test'), {
+  //     theme: 'outline',
+  //     size: 'large',
+  //   })
+  // }, [])
+  //
+
+  console.log(auth)
 
   useEffect(() => {
-    google.accounts.id.initialize({
-      client_id: 'CLIENT_ID',
-      callback: response,
-    })
-
-    google.accounts.id.renderButton(document.getElementById('test'), {
-      theme: 'outline',
-      size: 'large',
-    })
-  }, [])
+    if (auth) {
+      navigate('/profile', { replace: true })
+    }
+  }, [auth])
 
   const onSubmit = async (data) => {
     try {
@@ -48,12 +57,13 @@ const Login = () => {
       const accessToken = res.data?.accessToken
       const user = res.data?.user
 
-      localStorage.setItem('user', JSON.stringify(user))
-      localStorage.setItem('accessToken', JSON.stringify(accessToken))
-      setAuth(user)
-      navigate('/Profile', { replace: true })
+      if (accessToken) {
+        localStorage.setItem('user', JSON.stringify(user))
+        localStorage.setItem('accessToken', JSON.stringify(accessToken))
+        setAuth(user)
+      }
     } catch (error) {
-      setError(error?.response.data?.message)
+      setError(error?.response?.data?.message)
     }
   }
 
@@ -86,7 +96,7 @@ const Login = () => {
               text="Password"
               args={register('password')}
             />
-            {error.length > 0 && (
+            {error?.length > 0 && (
               <span style={{ color: 'red', fontSize: '11px' }}>{error}</span>
             )}
             <div className="flex items-baseline justify-between">

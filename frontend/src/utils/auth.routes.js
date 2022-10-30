@@ -9,6 +9,7 @@ export const loginUser = async (data) => {
   localStorage.getItem('accessToken', accessToken)
   localStorage.setItem('refreshToken', refreshToken)
   localStorage.setItem('user', JSON.stringify(user))
+  window.location.replace('/profile')
 }
 
 export const refreshToken = async () => {
