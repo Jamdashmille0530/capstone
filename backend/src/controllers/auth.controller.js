@@ -9,7 +9,7 @@ import {
 import {
   findUserByEmail,
   createUser,
-  findUserById,
+  findUserById
 } from '../services/user.services'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'

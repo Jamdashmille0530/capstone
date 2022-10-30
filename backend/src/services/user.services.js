@@ -25,3 +25,10 @@ export const updateUserData = (id, data) => {
     data,
   })
 }
+
+export const getAllUser = (id) => {
+  return prisma.user.update({
+    where: { id },
+    data,
+  })
+}

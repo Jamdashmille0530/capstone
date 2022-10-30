@@ -87,3 +87,17 @@ export const getAllUserWithoutPass = async (req, res, next) => {
     next(err)
   }
 }
+
+// export const getAllUser = async (req, res, next) => {
+//   try {
+//     const users = await prisma.user.findMany({
+//       where: { role: 'APPLICANT' && 'ADMIN' && 'SCHOLAR' },
+//     })
+//     res.json({
+//       status: 'success',
+//       users,
+//     })
+//   } catch (err) {
+//     next(err)
+//   }
+// }
