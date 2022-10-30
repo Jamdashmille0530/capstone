@@ -1,9 +1,7 @@
 import { prisma } from '../utils/db'
 import bcrypt from 'bcrypt'
 import { findUserById } from '../services/user.services'
-import nodemailer from 'nodemailer'
 import { transporter } from '../utils/transporter'
-import { error } from 'console'
 
 // export const createUser = async (req, res) => {
 //   try {
