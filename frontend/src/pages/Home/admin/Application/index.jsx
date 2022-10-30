@@ -1,5 +1,10 @@
 import React from 'react'
-import { getAllUserInfo, updateUserRole } from 'utils/admin.routes'
+import {
+  getAllUserInfo,
+  updateUserRole,
+  rejectApplicant,
+  acceptApplicant,
+} from 'utils/admin.routes'
 
 //import .
 
@@ -9,9 +14,12 @@ const Application = () => {
     return <div>Loading...</div>
   }
 
-  console.log(users)
+  const userApplication = users.filter(
+    (user) => user.role === 'APPLICANT' || user.role === 'SCHOLAR'
+  )
+
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col min-h-screen ">
       <div className="overflow-x-auto lg:-mx-8 ">
         <div className="py-2 inline-block lg:px-8 ">
           <div className=" border-b border-black lg:px-8 ">
@@ -22,7 +30,7 @@ const Application = () => {
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
-                    ID
+                    No.
                   </th>
                   <th
                     scope="col"
@@ -102,11 +110,11 @@ const Application = () => {
                   >
                     role
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left "
-                  ></th>
-                  <th
+                  ></th> */}
+                  {/* <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
@@ -117,7 +125,7 @@ const Application = () => {
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
                     updatedAt
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
@@ -173,10 +181,10 @@ const Application = () => {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => (
+                {userApplication.map((user, i) => (
                   <tr class="border-b">
-                    <td class="px-2 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {user.id}
+                    <td class="px-2 py-2 whitespace-nowrap text-sm font-medium text-gray-900 ">
+                      {i + 1}
                     </td>
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.fname}
@@ -218,7 +226,7 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.role}
                     </td>
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
                         className="px-6 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
                         // onClick={async () => {
@@ -228,14 +236,14 @@ const Application = () => {
                       >
                         Update
                       </button>
-                    </td>
+                    </td> */}
                     {/* --------- ROLE-------- */}
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.createdAt}
                     </td>
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.updatedAt}
-                    </td>
+                    </td> */}
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.bcert}
                     </td>
@@ -264,19 +272,17 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
-                        // onClick={async () => {
-                        //   await updateUserRole(user.id, "ADMIN");
-                        //   mutate();
-                        // }}
+                        onClick={async () => {
+                          await acceptApplicant(user.id, user.email)
+                        }}
                       >
                         Accept
                       </button>
                       <button
-                        className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
-                        // onClick={async () => {
-                        //   await updateUserRole(user.id, "ADMIN");
-                        //   mutate();
-                        // }}
+                        className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-red-300 rounded-lg hover:bg-gray-400 "
+                        onClick={async () => {
+                          await rejectApplicant(user.id, user.email)
+                        }}
                       >
                         Reject
                       </button>

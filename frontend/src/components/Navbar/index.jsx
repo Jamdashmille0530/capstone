@@ -37,7 +37,7 @@ const Navbar = () => {
                   <Button secondary>Chat</Button>
                 </Link>
 
-                {auth?.role === "ADMIN" && (
+                {auth?.role === 'ADMIN' && (
                   <div className="flex items-center justify-between py-8">
                     <nav>
                       <section className="MOBILE-MENU flex ">
@@ -51,7 +51,7 @@ const Navbar = () => {
                         </div>
 
                         <div
-                          className={isNavOpen ? "showMenuNav" : "hideMenuNav"}
+                          className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}
                         >
                           <div
                             className="absolute top-0 right-0 px-8 py-8"
@@ -79,6 +79,9 @@ const Navbar = () => {
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
                               <a href="/scholar">Calendar</a>
+                            </li>
+                            <li className="border-b border-gray-400 my-8 uppercase">
+                              <a href="/Admin">Admin</a>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
                               <a href="/application">Application</a>
@@ -111,7 +114,7 @@ const Navbar = () => {
     `}</style>
                   </div>
                 )}
-                {auth?.role === "SCHOLAR" && (
+                {auth?.role === 'SCHOLAR' && (
                   <div className="flex items-center justify-between py-8">
                     <nav>
                       <section className="MOBILE-MENU flex ">
@@ -125,7 +128,7 @@ const Navbar = () => {
                         </div>
 
                         <div
-                          className={isNavOpen ? "showMenuNav" : "hideMenuNav"}
+                          className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}
                         >
                           <div
                             className="absolute top-0 right-0 px-8 py-8"
@@ -186,7 +189,7 @@ const Navbar = () => {
         </Styles.Container>
       </Styles.Wrapper>
     </>
-  );
+  )
 };
 
 export default Navbar;
