@@ -22,9 +22,11 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }))
 app.use('/api/user', userRoute)
 app.use('/api/auth', authRoute)
 app.use('/api/calendar', calendarRoute)
+
 app.use('/api/admin', adminRoute)
 
 // Testing
+
 app.get('/api/healthchecker', (_, res) => {
   res.status(200).json({
     status: 'success',
