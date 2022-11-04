@@ -3,7 +3,7 @@ import laovid from 'assets/loavid.gif'
 import { useCallback } from 'react'
 import { addFile } from 'utils/user.route'
 import { useState } from 'react'
-import {AiOutlineDownload} from 'react-icons/ai'
+import { AiOutlineDownload } from 'react-icons/ai'
 
 const requirements = [
   {
@@ -71,13 +71,13 @@ const Upload = ({ name, required }) => {
   return (
     <div className="mb-1">
       <span>{name}</span>
-      <div className='-mb-5 mt-2'>
-       < AiOutlineDownload/>
+      <div className="-mb-5 mt-2">
+        <AiOutlineDownload />
       </div>
       <div className="relative border-solid h-25 w-40 ml-6 rounded-lg border-2 border-green-600 bg-gray-100 flex justify-center items-center">
         <div className="absolute">
           <div className="flex flex-col items-center">
-            <i className="fa fa-folder-open fa-3x text-green-600"></i>{' '}
+            {' '}
             <span className="text-sm block text-gray-400 font-normal">
               {loading
                 ? 'Loading...'
@@ -123,6 +123,7 @@ const Signup = () => {
                 <button
                   className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
                   onClick={alert('You have submitted your application')}
+                  type="submit"
                 >
                   Submit
                 </button>{' '}

@@ -1,4 +1,6 @@
+import { TextField } from '@material-ui/core'
 import React from 'react'
+
 import {
   getAllUserInfo,
   updateUserRole,
@@ -17,6 +19,20 @@ const Application = () => {
   const userApplication = users.filter(
     (user) => user.role === 'APPLICANT' || user.role === 'SCHOLAR'
   )
+
+  const Input = ({ text, type, placeholder }) => {
+    return (
+      <div className="mt-4">
+        <label className="block">{text}</label>
+        <input
+          type={type}
+          placeholder={placeholder}
+          // className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none
+          //     focus:ring-1 focus:ring-green-600"
+        />
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col min-h-screen ">
@@ -259,15 +275,28 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.wbill}
                     </td>
+
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      {user.program}
+                      <div className="mt-4">
+                        <Input type="text" placeholder="Program" />
+                        {user.program}
+                      </div>
                     </td>
+
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      {user.school}
+                      <div className="mt-4">
+                        <Input type="text" placeholder="School" />
+                        {user.school}
+                      </div>
                     </td>
+
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      {user.year}
+                      <div className="mt-4">
+                        <Input type="text" placeholder="Year" />
+                        {user.year}
+                      </div>
                     </td>
+
                     {/*accept and reject*/}
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
@@ -282,9 +311,8 @@ const Application = () => {
                       <button
                         className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-red-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
-                         
                           await rejectApplicant(user.id, user.email)
-                           alert('Rejected, sent to email')
+                          alert('Rejected, sent to email')
                         }}
                       >
                         Reject

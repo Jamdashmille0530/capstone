@@ -1,12 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { signUp } from "utils/user.route";
-import { useNavigate } from "react-router-dom";
-import laovid from "assets/loavid.gif";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { signUp } from 'utils/user.route'
+import { useNavigate } from 'react-router-dom'
+import laovid from 'assets/loavid.gif'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
-
-
+const schema = yup.object().shape({
+  fname: yup.string().required('First Name should be required please'),
+  mname: yup.string().required('Middle Name should be required please'),
+  lname: yup.string().required('Last Name should be required please'),
+  email: yup.string().email().required('Please insert valid email'),
+  address: yup.string().required('Please enter an address'),
+})
 
 const Signup = () => {
   const {
@@ -14,15 +21,14 @@ const Signup = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const onSubmit = async (data) => {
-    await signUp(data);
-    navigate("/signUp", { replace: true });
-  };
-
+    await signUp(data)
+    navigate('/signUp', { replace: true })
+  }
 
   return (
     <>
@@ -34,70 +40,79 @@ const Signup = () => {
                 <div className="w-full px-4 py-6 ">
                   <div className="required">
                     <div className="mb-1">
-                      {" "}
-                      <span className="text-sm">First Name</span>{" "}
+                      {' '}
+                      {/* <span className="text-sm">First Name</span>{" "} */}
                       <input
+                        className="h-12 px-2 mb-3.5 w-full  border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
+                        {...register('fname')}
+                        placeholder="First Name *"
                         type="text"
-                        className="h-12 px-2 w-full  border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
-                        {...register("fname")}
-                      />{" "}
-                      
+                      />{' '}
+                      <p className="text-red-600">{errors.fname?.message}</p>
                     </div>
                   </div>
                   <div className="Middle Name">
                     <div className="mb-1">
-                      {" "}
-                      <span className="text-sm">Middle Name</span>{" "}
+                      {' '}
+                      {/* <span className="text-sm">Middle Name</span>{" "} */}
                       <input
+                        className="h-12 px-2 mb-3.5 w-full border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
+                        {...register('mname')}
+                        placeholder="Middle Name *"
                         type="text"
-                        className="h-12 px-2 w-full border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
-                        {...register("mname")}
-                      />{" "}
+                      />{' '}
+                      <p className="text-red-600">{errors.mname?.message}</p>
                     </div>
                   </div>
                   <div className="Last Name">
                     <div className="mb-1">
-                      {" "}
-                      <span className="text-sm">Last Name</span>{" "}
+                      {' '}
+                      {/* <span className="text-sm">Last Name</span>{" "} */}
                       <input
+                        className="h-12 px-2 mb-3.5 w-full border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
+                        {...register('lname')}
+                        placeholder="Last Name *"
                         type="text"
-                        className="h-12 px-2 w-full border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
-                        {...register("lname")}
-                      />{" "}
+                      />{' '}
+                      <p className="text-red-600">{errors.lname?.message}</p>
                     </div>
                   </div>
                   <div className="Email">
                     <div className="mb-1">
-                      {" "}
-                      <span className="text-sm">Email</span>{" "}
+                      {' '}
+                      {/* <span className="text-sm">Email</span>{' '} */}
                       <input
+                        className="h-12 px-2 mb-3.5 w-full border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
+                        {...register('email')}
+                        placeholder="Email *"
                         type="text"
-                        className="h-12 px-2 w-full border-gray-400 border-2 rounded focus:outline-none focus:border-green-700"
-                        {...register("email")}
-                      />{" "}
+                      />{' '}
+                      <p className="text-red-600">{errors.email?.message}</p>
                     </div>
                   </div>
                   <div className="Address">
                     <div className="mb-1">
-                      {" "}
-                      <span className="text-sm">Address</span>{" "}
+                      {' '}
+                      {/* <span className="text-sm">Address</span>{' '} */}
                       <textarea
+                        className="h-24 py-1 mb-3.5 px-2 w-full border-2 border-gray-400 rounded focus:outline-none focus:border-green-700 resize-none"
+                        {...register('address')}
+                        placeholder="Address *"
                         type="text"
-                        className="h-24 py-1 px-2 w-full border-2 border-gray-400 rounded focus:outline-none focus:border-green-700 resize-none"
-                        {...register("address")}
-                      ></textarea>{" "}
+                      ></textarea>{' '}
+                      <p className="text-red-600">{errors.address?.message}</p>
                     </div>
                   </div>
                   <div className="mb-1"></div>
                   <div className="mt-3 text-right">
-                    {" "}
-                    <a href="/">Cancel</a>{" "}
+                    {' '}
+                    <a href="/">Cancel</a>{' '}
                     <button
                       className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
-                      type="submit"
+                      
                     >
                       Next
-                    </button>{" "}
+                    </button>{' '}
                   </div>
                 </div>
               </div>
@@ -109,7 +124,7 @@ const Signup = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup

@@ -1,15 +1,15 @@
-import * as Styles from "./styles";
-import { Link } from "react-router-dom";
-import Logo from "assets/Logo.png";
-import Button from "components/Button";
-import { useContext } from "react";
-import { useState } from "react";
-import AuthContext from "context/AuthProvider";
-import { logout } from "utils/auth.routes";
+import * as Styles from './styles'
+import { Link } from 'react-router-dom'
+import Logo from 'assets/Logo.png'
+import Button from 'components/Button'
+import { useContext } from 'react'
+import { useState } from 'react'
+import AuthContext from 'context/AuthProvider'
+import { logout } from 'utils/auth.routes'
 
 const Navbar = () => {
-  const { auth } = useContext(AuthContext);
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const { auth } = useContext(AuthContext)
+  const [isNavOpen, setIsNavOpen] = useState(false)
   return (
     <>
       <Styles.Wrapper>
@@ -156,7 +156,7 @@ const Navbar = () => {
                             </li>
 
                             <Button onClick={() => logout(auth?.id)}>
-                              logout
+                              Logout
                             </Button>
                           </ul>
                         </div>
@@ -190,6 +190,6 @@ const Navbar = () => {
       </Styles.Wrapper>
     </>
   )
-};
+}
 
-export default Navbar;
+export default Navbar
