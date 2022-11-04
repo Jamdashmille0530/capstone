@@ -2,19 +2,34 @@ import io from 'socket.io-client'
 import React from 'react'
 import { useEffect, useState } from 'react'
 
-const socket = io.connect('http://localhost:5000')
+// import firebase from 'firebase/compat/app'
+// // import firebase from 'firebase/app';
+// // import 'firebase/auth'
+// // import 'firebase/firestore'
+// import 'firebase/compat/firestore'
 
-function Chat() {
-  const [message, setMessage] = useState('')
-  const [messageReceived, setMessageReceived] = useState("")
-  const sendMessage = () => {
-    socket.emit('send_message', { message })
-  }
-  useEffect(() => {
-    socket.on('receive_message', (data) => {
-      setMessageReceived(data.message);
-    })
-  }, [socket])
+// // const socket = io.connect('http://localhost:5000')
+
+// firebase.initializeApp({
+//   apiKey: 'AIzaSyDacbnBR2IaSapN3C0XJckxIkH5bX-naFc',
+//   authDomain: 'react-firechat-8f2c5.firebaseapp.com',
+//   projectId: 'react-firechat-8f2c5',
+//   storageBucket: 'react-firechat-8f2c5.appspot.com',
+//   messagingSenderId: '655238589057',
+//   appId: '1:655238589057:web:117987de23e1d77095bb80',
+// })
+
+const Chat = () => {
+  // const [message, setMessage] = useState('')
+  // const [messageReceived, setMessageReceived] = useState("")
+  // const sendMessage = () => {
+  //   socket.emit('send_message', { message })
+  // }
+  // useEffect(() => {
+  //   socket.on('receive_message', (data) => {
+  //     setMessageReceived(data.message);
+  //   })
+  // }, [socket])
   return (
     <>
       <div className="m-auto box-border border-4 border-green-900 w-auto ml-2 mr-2  p-5 mt-5 bg-gray-300">

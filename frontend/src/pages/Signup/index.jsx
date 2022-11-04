@@ -4,6 +4,9 @@ import { useCallback } from 'react'
 import { addFile } from 'utils/user.route'
 import { useState } from 'react'
 import { AiOutlineDownload } from 'react-icons/ai'
+import { storage } from 'pages/firebase'
+import { ref, uploadBytes } from 'firebase/storage'
+import { v4 } from 'uuid'
 
 const requirements = [
   {
@@ -67,7 +70,13 @@ const Upload = ({ name, required }) => {
     const formData = new FormData()
     formData.append('image', e.target.files[0])
     fileUpload()
+
+     const attachment = ref(storage, `attachments/${fileUpload.name + v4()}`);
+     uploadBytes(attachment, fileUpload).then(() => {
+       alert('File uploaded')
+     })
   }, [])
+ 
   return (
     <div className="mb-1">
       <span>{name}</span>
