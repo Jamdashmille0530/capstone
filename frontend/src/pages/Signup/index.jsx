@@ -71,6 +71,7 @@ const Upload = ({ name, required }) => {
     formData.append('image', e.target.files[0])
     fileUpload()
 
+    
      const attachment = ref(storage, `attachments/${fileUpload.name + v4()}`);
      uploadBytes(attachment, fileUpload).then(() => {
        alert('File uploaded')
