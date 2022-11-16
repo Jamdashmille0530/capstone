@@ -61,29 +61,45 @@ const requirements = [
 
 const Upload = ({ name, required }) => {
   const [loading, setLoading] = useState(null)
-  const upload = useCallback((e) => {
-    const fileUpload = async () => {
-      await addFile(formData, required)
-      setLoading(false)
-    }
-    setLoading(true)
-    const formData = new FormData()
-    formData.append('image', e.target.files[0])
-    fileUpload()
 
-    
-     const attachment = ref(storage, `attachments/${fileUpload.name + v4()}`);
-     uploadBytes(attachment, fileUpload).then(() => {
-       alert('File uploaded')
-     })
+  const upload = useCallback((e) => {
+    // const fileUpload = async () => {
+    //   await addFile(formData, required)
+    //   setLoading(false)
+    // }
+    setLoading(true)
+    if (e.target.files) {
+      // const formData = new FormData()
+      // formData.append('image', e.target.files[0])
+      const file = e.target.files[0]
+      const metadata = {
+        contentType: file.type,
+      }
+
+      const attachment = ref(storage, `attachments/${file.name + v4()}`)
+      uploadBytes(attachment, file, metadata).then(() => {
+        alert('File uploaded')
+        setLoading(false)
+      })
+    }
+    // fileUpload()
+
+    // const metadata = {
+    //   contentType: 'image/jpeg',
+    // }
+
+    // const attachment = ref(storage, `attachments/${fileUpload.name + v4()}`)
+    // uploadBytes(attachment, fileUpload, metadata).then(() => {
+    //   alert('File uploaded')
+    // })
   }, [])
- 
+
   return (
     <div className="mb-1">
       <span>{name}</span>
-      <div className="-mb-5 mt-2">
+      {/* <div className="-mb-5 mt-2">
         <AiOutlineDownload />
-      </div>
+      </div> */}
       <div className="relative border-solid h-25 w-40 ml-6 rounded-lg border-2 border-green-600 bg-gray-100 flex justify-center items-center">
         <div className="absolute">
           <div className="flex flex-col items-center">
@@ -119,6 +135,9 @@ const Signup = () => {
                 {' '}
                 <span className="text-2xl text-gray-700 ">
                   Attach All The Needed Files For Your Application
+                </span>{' '}
+                <span className="text-xs text-red-900 text-bold">
+                  Make sure to attach png, jpeg, jpg (ex. ID_SURNAME_FIRSTNAME)
                 </span>{' '}
               </div>
               <div className="grid grid-cols-2">

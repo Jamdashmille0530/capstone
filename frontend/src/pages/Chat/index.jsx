@@ -1,6 +1,19 @@
-import io from 'socket.io-client'
 import React from 'react'
+import io from 'socket.io-client'
 import { useEffect, useState } from 'react'
+import ChatHome from './ChatHome'
+import './style.scss'
+
+const index = () => {
+  return (
+    <div className="Index">
+      <div className="container">
+        <ChatHome />
+      </div>
+    </div>
+  )
+}
+export default index
 
 // import firebase from 'firebase/compat/app'
 // // import firebase from 'firebase/app';
@@ -18,21 +31,19 @@ import { useEffect, useState } from 'react'
 //   messagingSenderId: '655238589057',
 //   appId: '1:655238589057:web:117987de23e1d77095bb80',
 // })
+// const [message, setMessage] = useState('')
+// const [messageReceived, setMessageReceived] = useState("")
+// const sendMessage = () => {
+//   socket.emit('send_message', { message })
+// }
+// useEffect(() => {
+//   socket.on('receive_message', (data) => {
+//     setMessageReceived(data.message);
+//   })
+// }, [socket])
 
-const Chat = () => {
-  // const [message, setMessage] = useState('')
-  // const [messageReceived, setMessageReceived] = useState("")
-  // const sendMessage = () => {
-  //   socket.emit('send_message', { message })
-  // }
-  // useEffect(() => {
-  //   socket.on('receive_message', (data) => {
-  //     setMessageReceived(data.message);
-  //   })
-  // }, [socket])
-  return (
-    <>
-      <div className="m-auto box-border border-4 border-green-900 w-auto ml-2 mr-2  p-5 mt-5 bg-gray-300">
+{
+  /* <div className="m-auto box-border border-4 border-green-900 w-auto ml-2 mr-2  p-5 mt-5 bg-gray-300">
         <p className="font-bold text-l flex justify-center mb-2">
           Chat with us
         </p>
@@ -67,9 +78,11 @@ const Chat = () => {
             </form>
           </div>
         </div>
-      </div>
+      </div> */
+}
 
-      {/* <div className="m-auto box-border border-4 border-green-900 w-auto ml-2 mr-2  p-5 mt-5 bg-gray-300">
+{
+  /* <div className="m-auto box-border border-4 border-green-900 w-auto ml-2 mr-2  p-5 mt-5 bg-gray-300">
         <p className="font-bold text-l flex justify-center mb-2">
           Chat with us
         </p>
@@ -138,8 +151,5 @@ const Chat = () => {
             </button>
           </div>
         </form>
-      </div> */}
-    </>
-  )
+      </div> */
 }
-export default Chat

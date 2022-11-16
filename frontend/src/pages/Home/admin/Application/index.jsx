@@ -17,7 +17,7 @@ const Application = () => {
   }
 
   const userApplication = users.filter(
-    (user) => user.role === 'APPLICANT' || user.role === 'SCHOLAR'
+    (user) => user.role === 'APPLICANT' 
   )
 
   const Input = ({ text, type, placeholder }) => {
@@ -35,8 +35,8 @@ const Application = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen ">
-      <div className="overflow-x-auto lg:-mx-8 ">
+    <div className="flex justify-center min-h-screen mt-7">
+      <div className="overflow-x-auto lg:-mx-11 ">
         <div className="py-2 inline-block lg:px-8 ">
           <div className=" border-b border-black lg:px-8 ">
             <table className="table table-striped border-separate border-spacing-2 border border-slate-400  shadow overflow-hidden ">
@@ -78,7 +78,7 @@ const Application = () => {
                   >
                     address
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
@@ -119,7 +119,7 @@ const Application = () => {
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
                     sketchAddress
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
@@ -142,7 +142,7 @@ const Application = () => {
                   >
                     updatedAt
                   </th> */}
-                  <th
+                  {/* <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
@@ -171,8 +171,8 @@ const Application = () => {
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
                     waterBill
-                  </th>
-                  <th
+                  </th> */}
+                  {/* <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
@@ -189,10 +189,10 @@ const Application = () => {
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
                     year
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
-                    className="text-sm font-medium text-gray-900 px-2 py-3 pr-20 text-left  "
+                    className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   ></th>
                 </tr>
               </thead>
@@ -217,7 +217,7 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.address}
                     </td>
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.idPicture}
                     </td>
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
@@ -237,7 +237,7 @@ const Application = () => {
                     </td>
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.sketchAddress}
-                    </td>
+                    </td> */}
                     {/* --------- ROLE-------- */}
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.role}
@@ -260,7 +260,7 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.updatedAt}
                     </td> */}
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.bcert}
                     </td>
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
@@ -274,9 +274,9 @@ const Application = () => {
                     </td>
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.wbill}
-                    </td>
+                    </td> */}
 
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <div className="mt-4">
                         <Input type="text" placeholder="Program" />
                         {user.program}
@@ -295,7 +295,7 @@ const Application = () => {
                         <Input type="text" placeholder="Year" />
                         {user.year}
                       </div>
-                    </td>
+                    </td> */}
 
                     {/*accept and reject*/}
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">

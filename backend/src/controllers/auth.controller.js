@@ -9,7 +9,7 @@ import {
 import {
   findUserByEmail,
   createUser,
-  findUserById
+  findUserById,
 } from '../services/user.services'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -74,6 +74,10 @@ export const login = async (req, res, next) => {
         status: 'failed',
         message: 'Invalid login credentials.',
       })
+    }
+
+    if (existingUser.role === 'APPLICANT') {
+      return res.status(400).json({ message: 'Unauthorized' })
     }
 
     if (existingUser.password === null)

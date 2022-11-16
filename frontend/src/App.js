@@ -14,6 +14,7 @@ import Admin from 'pages/Home/admin'
 import AdminChat from 'pages/Home/admin/adminChat'
 import Application from 'pages/Home/admin/Application'
 import Scholar from 'pages/Home/admin/Scholar'
+import Student from 'pages/Home/admin/Student'
 
 import { SWRConfig } from 'swr'
 import { fetcher } from 'utils/fetcher'
@@ -81,6 +82,14 @@ function App() {
             element={
               <Protected isLoggedIn={auth?.role === 'ADMIN'}>
                 <Scholar />
+              </Protected>
+            }
+          />
+          <Route
+            path="/student"
+            element={
+              <Protected isLoggedIn={auth?.role === 'ADMIN'}>
+                <Student />
               </Protected>
             }
           />

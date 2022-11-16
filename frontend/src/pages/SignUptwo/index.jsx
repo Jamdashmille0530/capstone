@@ -8,11 +8,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 const schema = yup.object().shape({
-  fname: yup.string().required('First Name should be required please'),
-  mname: yup.string().required('Middle Name should be required please'),
-  lname: yup.string().required('Last Name should be required please'),
-  email: yup.string().email().required('Please insert valid email'),
-  address: yup.string().required('Please enter an address'),
+  fname: yup.string().required('First Name is Required'),
+  mname: yup.string().required('Middle Name is Required'),
+  lname: yup.string().required('Last Name is Required'),
+  email: yup.string().email().required('Please insert a valid email'),
+  address: yup.string().required('Please enter an Address'),
 })
 
 const Signup = () => {
@@ -107,10 +107,7 @@ const Signup = () => {
                   <div className="mt-3 text-right">
                     {' '}
                     <a href="/">Cancel</a>{' '}
-                    <button
-                      className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
-                      
-                    >
+                    <button className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900">
                       Next
                     </button>{' '}
                   </div>
