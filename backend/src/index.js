@@ -6,13 +6,16 @@ import userRoute from './routes/users.routes'
 import authRoute from './routes/auth.routes'
 import calendarRoute from './routes/calendar.routes'
 import adminRoute from './routes/admin.routes'
+//siguro chat to
 
 const http = require('http')
 const { Server } = require('socket.io')
 
+
 const app = express()
 
 const server = http.createServer(app)
+
 
 app.use(express.static('public/images'))
 app.use(express.json())
