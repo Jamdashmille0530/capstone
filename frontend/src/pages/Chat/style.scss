@@ -19,7 +19,6 @@
 
   .container {
     border: 1px solid;
-    border-radius: 10px;
     width: 65%;
     height: 80%;
     display: flex;
@@ -149,11 +148,13 @@
       }
 
       .messages {
-        background-color: #2e8b57;
+        background-color: #047857;
         padding: 10px;
         height: calc(100% - 100px);
         overflow: scroll;
-
+.header{
+  color: rgb(255, 255, 255);
+}
         .message {
           display: flex;
           gap: 20px;

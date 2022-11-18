@@ -7,7 +7,7 @@ const ChatHome = () => {
   return (
     <div className="ChatHome">
       <div className="container">
-        <ChatSidebar />
+        {/* <ChatSidebar /> */}
         <ChatOne />
       </div>
     </div>

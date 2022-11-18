@@ -9,12 +9,14 @@ const ChatOne = () => {
   return (
     <div className="chatone">
       <div className="chatInfo">
-        <span>Doyoung</span>
-        <div className="chatIcons">
+        
+          <span>LAO FOUNDATION</span>
+       
+        {/* <div className="chatIcons">
           <img src={CameraTest} /> <img src={AddTest} /> <img src={MoreTest} />
-        </div>
+        </div> */}
       </div>
-      <Messages />
+      {/* <Messages /> */}
       <Input />
     </div>
   )
