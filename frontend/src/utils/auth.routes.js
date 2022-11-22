@@ -1,4 +1,4 @@
-import { api } from './axios'
+import { api, apiRefresh } from './axios'
 
 export const loginUser = async (data) => {
   const resp = await api.post('/api/auth/login', data, {
@@ -6,7 +6,7 @@ export const loginUser = async (data) => {
     withCredentials: true,
   })
   const { accessToken, refreshToken, user } = resp.data
-  localStorage.getItem('accessToken', accessToken)
+  localStorage.setItem('accessToken', accessToken)
   localStorage.setItem('refreshToken', refreshToken)
   localStorage.setItem('user', JSON.stringify(user))
   window.location.replace('/profile')
@@ -16,8 +16,8 @@ export const refreshToken = async () => {
   const data = localStorage.getItem('refreshToken')
   if (!data) return
   try {
-    const resp = await api.post(
-      '/api/auth/login',
+    const resp = await apiRefresh.post(
+      '/api/auth/refreshToken',
       { refreshToken: data },
       {
         headers: {
@@ -32,7 +32,7 @@ export const refreshToken = async () => {
     localStorage.setItem(refresh)
     return
   } catch (e) {
-    return
+    throw e
   }
 }
 

@@ -123,14 +123,14 @@ export const refreshToken = async (req, res, next) => {
     const savedRefreshToken = await findRefreshTokenById(payload.jti)
 
     if (!savedRefreshToken || savedRefreshToken.revoked === true) {
-      res.status(401).json({
+      res.status(500).json({
         status: 'failed',
         message: 'Unauthorized',
       })
     }
 
     const hashedToken = hashToken(refreshToken)
-    if (hashToken !== savedRefreshToken.hashedToken) {
+    if (hashedToken !== savedRefreshToken.hashedToken) {
       res.status(401).json({
         status: 'failed',
         message: 'Unauthorized',
