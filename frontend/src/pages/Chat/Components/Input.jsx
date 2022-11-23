@@ -18,6 +18,7 @@ const Input = ({ roomId }) => {
       roomId,
       userId: decoded.userId,
       message,
+      image: 'https://my.alfred.edu/zoom/_images/foster-lake.jpg',
     })
   }, [socket, roomId, message])
 
