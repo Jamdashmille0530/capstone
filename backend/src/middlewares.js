@@ -4,7 +4,7 @@ export const isAuth = (req, res, next) => {
   const { authorization } = req.headers
 
   if (!authorization) {
-    res.status(401).json({
+    return res.status(401).json({
       message: 'Unauthorized',
     })
   }
@@ -15,11 +15,11 @@ export const isAuth = (req, res, next) => {
     req.payload = payload
   } catch (err) {
     if (err.name === 'TokenExpiredError') {
-      res.status(401).json({
+      return res.status(401).json({
         message: err.name,
       })
     }
-    res.status(401).json({
+    return res.status(401).json({
       message: 'Unauthorized',
     })
   }

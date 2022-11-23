@@ -10,7 +10,7 @@ import { transporter } from '../utils/transporter'
 //     const user = await prisma.user.create({
 //       data: { email, fname, mname, lname, address },
 //     })
-//     res.json({ user, message: 'User create successfully' })
+//   return res.json({ user, message: 'User create successfully' })
 //   } catch (error) {
 //     return res.status(500).json({
 //       error: true,
@@ -27,7 +27,7 @@ import { transporter } from '../utils/transporter'
 //       data: { fname, mname, lname, email, address },
 //     });
 
-//     res.json({
+//   return res.json({
 //       status: "success",
 //       user,
 //       message: "User created successfully",
@@ -45,7 +45,7 @@ export const me = async (req, res, next) => {
     const { userId } = req.payload
     const user = await findUserById(userId)
     delete user.password
-    res.json({
+    return res.json({
       status: 'success',
       message: 'Successfully retrieved logined user',
       data: user,
@@ -89,7 +89,7 @@ export const acceptApplicant = async (req, res, next) => {
       }
     )
 
-    res.json({
+    return res.json({
       status: 'success',
       data: user,
       message: 'Successfully update user',
@@ -124,7 +124,7 @@ export const rejectApplicant = async (req, res, next) => {
       }
     )
 
-    res.json({
+    return res.json({
       status: 'success',
       message: 'Successfully delete user',
     })
@@ -138,7 +138,7 @@ export const getAllUserWithoutPass = async (req, res, next) => {
     const users = await prisma.user.findMany({
       where: { role: 'APPLICANT', password: null },
     })
-    res.json({
+    return res.json({
       status: 'success',
       users,
     })
@@ -152,7 +152,7 @@ export const getAllUserWithoutPass = async (req, res, next) => {
 //     const users = await prisma.user.findMany({
 //       where: { role: 'APPLICANT' && 'ADMIN' && 'SCHOLAR' },
 //     })
-//     res.json({
+//   return res.json({
 //       status: 'success',
 //       users,
 //     })

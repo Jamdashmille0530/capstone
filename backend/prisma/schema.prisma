@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+ 
 }
 
 datasource db {
@@ -46,6 +47,7 @@ model User {
   room          Room[]
   message       Messages[]
   refreshToken  RefreshToken[]
+
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
 }
@@ -71,8 +73,10 @@ model Calendar {
 model Room {
   id      String   @id @default(uuid())
   userId  String   @unique
+  latest String? 
   user    User     @relation(fields: [userId], references: [id])
-  message Messages[]
+  message Messages[] @relation("messages")
+  latestMessage  Messages?   @relation("room", fields: [latest], references: [id])
 }
 
 model Messages {
@@ -83,6 +87,7 @@ model Messages {
  image   String
  created DateTime  @default(now())
  modified DateTime @default(now())
- room    Room     @relation(fields: [roomId], references: [id])
+ room    Room     @relation("messages",fields: [roomId], references: [id])
+ room2   Room[]   @relation("room")  
  user    User     @relation(fields: [userId], references: [id])
 }

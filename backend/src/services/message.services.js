@@ -1,7 +1,7 @@
 import { prisma } from '../utils/db'
 
 export const sendMessage = async (roomId, userId, message, image) => {
-  return await prisma.messages.create({
+  const data = await prisma.messages.create({
     data: {
       roomId: roomId ?? '',
       userId: userId ?? '',
@@ -9,6 +9,17 @@ export const sendMessage = async (roomId, userId, message, image) => {
       image: image ?? '',
     },
   })
+
+  await prisma.room.updateMany({
+    where: {
+      id: roomId,
+    },
+    data: {
+      latest: data.id,
+    },
+  })
+
+  return data
 }
 
 export const getMessages = async (roomId, page, limit) => {
@@ -24,10 +35,41 @@ export const getMessages = async (roomId, page, limit) => {
   })
 }
 
-export const getRooms = async () => {
+export const getRooms = async (page, limit) => {
   return await prisma.room.findMany({
-    include: {
-      user: true,
+    select: {
+      user: {
+        select: {
+          id: true,
+          fname: true,
+          mname: true,
+          lname: true,
+          image: true,
+        },
+      },
+      // message: {
+      //   select: {
+      //     message,
+      //   },
+      //   orderBy: {
+      //     created: 'desc',
+      //   },
+      //   take: 1,
+      // },
+    },
+    where: {
+      user: {
+        role: {
+          not: 'ADMIN',
+        },
+      },
+    },
+    skip: page,
+    take: limit,
+    orderBy: {
+      latestMessage: {
+        created: 'desc',
+      },
     },
   })
 }

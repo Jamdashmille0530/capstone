@@ -1,10 +1,23 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 export const addAttachment = async (req, res) => {
   try {
-    const {idPicture, gradeSlip, eslip, ncae, ebill, wbill, tbill, bcert, indigency, autobiograpahy, pantawidId, sketchAddress } = req.body;
+    const {
+      idPicture,
+      gradeSlip,
+      eslip,
+      ncae,
+      ebill,
+      wbill,
+      tbill,
+      bcert,
+      indigency,
+      autobiograpahy,
+      pantawidId,
+      sketchAddress,
+    } = req.body
 
     const user = await prisma.user.create({
       data: {
@@ -21,17 +34,17 @@ export const addAttachment = async (req, res) => {
         pantawidId,
         sketchAddress,
       },
-    });
+    })
 
-    res.json({
-      status: "success",
+    return res.json({
+      status: 'success',
       user,
-      message: "User created successfully",
-    });
+      message: 'User created successfully',
+    })
   } catch (error) {
     return res.status(400).json({
-      status: "failed",
-      message: "User creation failed",
-    });
+      status: 'failed',
+      message: 'User creation failed',
+    })
   }
-};
+}

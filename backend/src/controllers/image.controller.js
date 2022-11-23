@@ -11,7 +11,7 @@ export const insertImage = async (req, res) => {
 export const getImage = async (req, res) => {
   const data = await findUserById(req.params.id)
   data[req.params.column]
-  res.sendFile(data[req.params.column], {
+  return res.sendFile(data[req.params.column], {
     root: '.',
   })
 }

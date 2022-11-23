@@ -2,7 +2,7 @@ import { prisma } from '../utils/db'
 import bcrypt from 'bcrypt'
 
 export const findUserByEmail = (email) => {
-  return prisma.user.findFirst({
+  return prisma.user.findUnique({
     where: { email },
   })
 }
