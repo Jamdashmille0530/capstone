@@ -13,13 +13,16 @@ export const apiRefresh = axios.create({
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
+    if (error.response.status !== 401) {
+      return Promise.reject(error)
+    }
     try {
-      if (error.response.status !== 401) return Promise.reject(error)
       await refreshToken()
       return api(error.config)
-    } catch (err) {
+    } catch {
       localStorage.clear()
       window.location.href = '/login'
+      return
     }
   }
 )

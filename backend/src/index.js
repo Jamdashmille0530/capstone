@@ -16,7 +16,7 @@ const server = http.createServer(app)
 io.attach(server)
 app.use(express.static('public/images'))
 app.use(express.json())
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }))
+app.use(cors({ origin: 'http://localhost:3001', credentials: true }))
 
 // Routes
 app.use('/api/user', userRoute)

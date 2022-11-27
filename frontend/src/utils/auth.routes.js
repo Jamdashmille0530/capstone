@@ -14,6 +14,7 @@ export const loginUser = async (data) => {
 
 export const refreshToken = async () => {
   const data = localStorage.getItem('refreshToken')
+
   if (!data) return
   try {
     const resp = await apiRefresh.post(
@@ -27,10 +28,10 @@ export const refreshToken = async () => {
         withCredentials: true,
       }
     )
+    console.log('HEY', resp.data)
     const { accessToken, refreshToken: refresh } = resp.data
-    localStorage.setItem(accessToken)
-    localStorage.setItem(refresh)
-    return
+    localStorage.setItem('accessToken', accessToken)
+    localStorage.setItem('refreshToken', refresh)
   } catch (e) {
     throw e
   }

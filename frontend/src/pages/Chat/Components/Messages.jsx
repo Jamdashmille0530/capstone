@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode'
 const Messages = ({ room }) => {
   const [page, setPage] = useState(0)
   const [messages, setMessages] = useState({ data: [], count: 0 })
-  const decoded = jwtDecode(localStorage.getItem('accessToken'))
+  const decoded = jwtDecode(localStorage.getItem('accessToken') || '')
   const currentIsAdmin = decoded.role === 'ADMIN'
 
   useEffect(() => {

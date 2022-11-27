@@ -4,7 +4,7 @@ import ImageTest from 'assets/imagetest.png'
 
 import { useState } from 'react'
 
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 
 import { useCallback } from 'react'
 import { socket } from '../../../utils/socket'
@@ -13,7 +13,7 @@ const Input = ({ roomId }) => {
   const [message, setMessage] = useState('')
 
   const sendMessage = useCallback(() => {
-    const decoded = jwt_decode(localStorage.getItem('accessToken'))
+    const decoded = jwtDecode(localStorage.getItem('accessToken') ?? '')
     socket.emit('sendMessage', {
       roomId,
       userId: decoded.userId,

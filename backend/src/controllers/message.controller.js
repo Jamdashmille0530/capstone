@@ -18,10 +18,10 @@ export const getAllMessages = async (req, res) => {
 
     const data = await getMessages(
       id,
-      typeof page === 'number' && typeof limit === 'number'
-        ? page * limit
+      !isNaN(Number(page)) && !isNaN(Number(limit))
+        ? Number(page) * Number(limit)
         : undefined,
-      typeof page === 'number' && typeof limit === 'number' ? limit : undefined
+      !isNaN(Number(page)) && !isNaN(Number(limit)) ? Number(limit) : undefined
     )
     const allData = await getMessages(id)
 
@@ -35,10 +35,10 @@ export const getUsers = async (req, res, next) => {
     const { page, limit } = req.query
 
     const users = await getRooms(
-      typeof page === 'number' && typeof limit === 'number'
-        ? page * limit
+      !isNaN(Number(page)) && !isNaN(Number(limit))
+        ? Number(page) * Number(limit)
         : undefined,
-      typeof page === 'number' && typeof limit === 'number' ? limit : undefined
+      !isNaN(Number(page)) && !isNaN(Number(limit)) ? Number(limit) : undefined
     )
     const allUsers = await getRooms()
     return res.json({

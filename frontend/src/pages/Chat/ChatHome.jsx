@@ -17,11 +17,16 @@ const ChatContainer = ({ children }) => {
 }
 
 const ChatHome = () => {
-  const decoded = jwtDecode(localStorage.getItem('accessToken'))
+  const decoded = localStorage.getItem('accessToken')
+    ? jwtDecode(localStorage.getItem('accessToken'))
+    : null
   const [userId, setUserId] = useState(
-    decoded.role !== 'ADMIN' ? decoded.userId : null
+    decoded?.role !== 'ADMIN' ? decoded?.userId : null
   )
   const [room, setRoom] = useState(null)
+
+  if (!decoded) return null
+
   useEffect(() => {
     socket.off(room?.roomId)
     getRoom(userId).then((data) => {

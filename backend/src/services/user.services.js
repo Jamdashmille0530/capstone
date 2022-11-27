@@ -1,15 +1,42 @@
 import { prisma } from '../utils/db'
 import bcrypt from 'bcrypt'
 
+export const findUserByRegisteredEmail = (email) => {
+  return prisma.user.findFirst({
+    where: {
+      OR: [
+        {
+          email,
+          role: 'ADMIN',
+        },
+        {
+          email,
+          role: 'SCHOLAR',
+        },
+      ],
+    },
+  })
+}
+
 export const findUserByEmail = (email) => {
-  return prisma.user.findUnique({
-    where: { email },
+  return prisma.user.findFirst({
+    where: {
+      email,
+    },
   })
 }
 
 export const createUser = (user) => {
-  return prisma.user.create({
-    data: user,
+  return prisma.user.upsert({
+    where: {
+      email: user.email,
+    },
+    update: {
+      ...user,
+    },
+    create: {
+      ...user,
+    },
   })
 }
 

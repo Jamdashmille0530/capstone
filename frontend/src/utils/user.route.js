@@ -5,9 +5,10 @@ import { withToken } from './fetcher'
 export const signUp = async (data) => {
   try {
     const resp = await api.post('/api/auth/register', data)
-    // const { accessToken, refreshToken, user } = resp.data
-    // localStorage.setItem('accessToken', accessToken)
-    // localStorage.setItem('refreshToken', refreshToken)
+
+    const { accessToken, refreshToken, user } = resp.data
+    localStorage.setItem('accessToken', accessToken)
+    localStorage.setItem('refreshToken', refreshToken)
     // localStorage.setItem('user', JSON.stringify(user))
   } catch (e) {
     console.log(e)

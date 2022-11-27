@@ -8,6 +8,7 @@ import {
 } from '../services/auth.services'
 import {
   findUserByEmail,
+  findUserByRegisteredEmail,
   createUser,
   findUserById,
 } from '../services/user.services'
@@ -26,7 +27,7 @@ export const register = async (req, res, next) => {
       })
     }
 
-    const existingUser = await findUserByEmail(email)
+    const existingUser = await findUserByRegisteredEmail(email)
 
     if (existingUser) {
       return res.status(400).json({
@@ -68,7 +69,7 @@ export const login = async (req, res, next) => {
     }
 
     const existingUser = await findUserByEmail(email)
-    console.log(email, password)
+
     if (!existingUser) {
       return res.status(403).json({
         status: 'failed',
@@ -122,7 +123,7 @@ export const refreshToken = async (req, res, next) => {
     const payload = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET)
 
     const savedRefreshToken = await findRefreshTokenById(payload.jti)
-
+    console.log(payload)
     if (!savedRefreshToken) {
       return res.status(401).json({
         status: 'failed',
