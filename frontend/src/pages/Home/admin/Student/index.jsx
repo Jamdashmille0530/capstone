@@ -138,21 +138,21 @@ const Input = ({ text, type, placeholder }) => {
                     </td> */}
                     {/* --------- ROLE-------- */}
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      <div className="mt-2">
-                        <Input type="text" placeholder="Program" />
+                      <div className="mt-1">
+                        {/* <Input type="text" placeholder="Program" /> */}
                         {user.program}
                       </div>
                     </td>
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      <div className="mt-2">
-                        <Input type="text" placeholder="School" />
+                      <div className="mt-1">
+                        {/* <Input type="text" placeholder="School" /> */}
                         {user.school}
                       </div>
                     </td>
 
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      <div className="mt-2">
-                        <Input type="text" placeholder="Year" />
+                      <div className="mt-1">
+                        {/* <Input type="text" placeholder="Year" /> */}
                         {user.year}
                       </div>
                     </td>

@@ -18,7 +18,6 @@ const Input = ({ roomId }) => {
       roomId,
       userId: decoded.userId,
       message,
-      image: 'https://my.alfred.edu/zoom/_images/foster-lake.jpg',
     })
   }, [socket, roomId, message])
 
@@ -33,10 +32,10 @@ const Input = ({ roomId }) => {
       />
       <div className="send">
         {/* <img src={AttachTest} alt="" /> */}
-        <input type="file" style={{ display: 'none' }} id="file" />
+        {/* <input type="file" style={{ display: 'none' }} id="file" />
         <label htmlFor="file">
           <img src={ImageTest} alt="" />
-        </label>
+        </label> */}
         <button onClick={sendMessage}>Send</button>
       </div>
     </div>

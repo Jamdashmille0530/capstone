@@ -74,7 +74,13 @@ export const acceptApplicant = async (req, res, next) => {
         to: email,
         subject: 'Accepted',
         html: `
-        <b>Congrats!<b>
+        <b>
+Congratulations! with careful observation and filtering, It is with great joy that we send you this email to tell you that you passed as our Scholar!
+
+You may now Log-In as a Scholar. Your password is attached to this email. Please do remember not to share your password with anyone else.
+
+Sincerely,
+Lao Foundation Inc.<b>
         <br/>
         <p>email: ${email}
         <p>password: ${generatePass}

@@ -8,9 +8,9 @@ export const Search = () => {
         <input type="text" placeholder="Search a User" />
       </div>
       <div className="userChat">
-        <img src={Test} />
+       
         <div className="userChatInfo">
-          <span>Doyoung</span>
+         
         </div>
       </div>
     </div>
