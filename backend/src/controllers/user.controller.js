@@ -117,7 +117,11 @@ export const rejectApplicant = async (req, res, next) => {
         to: email,
         subject: 'Rejected',
         html: `
-        <b>Sorry!<b> 
+        <b>Thank you for your scholarship application, unfortunately, we had a large number of applicants, and we regret to inform you that you have not been selected as a scholar.
+
+We would like to thank you for your interest in the scholarship. This decision was also hard for us, and it doesn't mean that you are not a suitable scholar. Although you didn't get selected please continue working hard, we see what you are capable of, keep it up and try submitting your application again next school year. We hope to see you again.
+Sincerely,
+Lao Foundation Inc.<b> 
         `,
       },
       (error, info) => {
