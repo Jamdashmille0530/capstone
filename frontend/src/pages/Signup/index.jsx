@@ -34,7 +34,7 @@ const requirements = [
     required: 'tbill',
   },
   {
-    name: 'Photocopy of your National Career Assessment Examination (NCAE',
+    name: 'Photocopy of your National Career Assessment Examination (NCAE)',
     required: 'ncae',
   },
   {
@@ -136,11 +136,11 @@ const Signup = () => {
                 <span className="text-2xl text-gray-700 ">
                   Attach All The Needed Files For Your Application
                 </span>{' '}
-                <span className="text-xs text-red-900 text-bold">
-                  Make sure to attach png, jpeg, jpg (ex. ID_SURNAME_FIRSTNAME)
+                <span className="text-s text-red-900 text-bo">
+                  Make sure to attach png, jpeg, jpg (ex. FILE_SURNAME_FIRSTNAME)
                 </span>{' '}
               </div>
-              <div className="grid grid-cols-2">
+              <div className="grid md:grid-cols-2">
                 {requirements.map((data, i) => (
                   <Upload key={i} name={data.name} required={data.required} />
                 ))}
@@ -160,7 +160,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
-        <div className="flex max-h-full pt-5 pl-2 ">
+        <div className="hidden md:flex max-h-full pt-5 pl-2 ">
           <img src={laovid} />
         </div>
       </div>

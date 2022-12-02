@@ -116,8 +116,8 @@ const Signup = () => {
             </div>
           </div>
         </form>
-        <div className=" pl-2">
-          <img src={laovid} />
+        <div className="hidden md:flex pl-2">
+          <img  src={laovid} />
         </div>
       </div>
     </>

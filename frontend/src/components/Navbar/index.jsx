@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import AuthContext from 'context/AuthProvider'
 import { logout } from 'utils/auth.routes'
+import logolao from 'assets/logolao.png'
 
 const Navbar = () => {
   const { auth } = useContext(AuthContext)
@@ -15,20 +16,35 @@ const Navbar = () => {
       <Styles.Wrapper>
         <Styles.Container>
           <Link to="/">
-            <img src={Logo} alt="Logo" className="h-12" />
+            <img src={Logo} alt="Logo" className="hidden md:flex mt-4 h-12 " />
           </Link>
-
+   
+          {auth?.role === 'SCHOLAR' && (
+            <Link to="/">
+              <img src={Logo} alt="Logolao" className="mt-5 h-12 md:hidden" />
+            </Link>
+            
+          )}
+          {auth?.role === 'ADMIN' && (
+            <Link to="/">
+              <img src={Logo} alt="Logolao" className=" mt-5 h-12 md:hidden" />
+            </Link>
+          )}
           <Styles.Navlinks>
             {!auth ? (
               <>
                 <Link to="/signuptwo">
-                  <Button secondary>Sign up</Button>
+                  <Button secondary className="sm:flex-auto">
+                    Sign up
+                  </Button>
                 </Link>
                 <Link to="/Login">
-                  <Button>Login</Button>
+                  <Button className="sm:flex-auto">Login</Button>
                 </Link>
                 <Link to="/Chat">
-                  <Button secondary>Chat</Button>
+                  <Button secondary className="sm:flex-auto">
+                    Chat
+                  </Button>
                 </Link>
               </>
             ) : (
