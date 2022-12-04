@@ -22,6 +22,9 @@ app.use(
     origin: [
       'https://capstone-fe-jamdashmille0530.vercel.app',
       'https://capstone-4ytyl1cfu-jamdashmille0530.vercel.app',
+      'https://capstone-fe-git-main-jamdashmille0530.vercel.app',
+      'https://capstone-fe-wine.vercel.app',
+      'https://capstone-fe-jamdashmille0530.vercel.app',
     ],
     credentials: true,
   })
