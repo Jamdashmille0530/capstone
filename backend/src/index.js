@@ -15,14 +15,17 @@ const app = express()
 const server = http.createServer(app)
 io.attach(server)
 app.use(express.static('public/images'))
+
 app.use(express.json())
 app.use(
   cors({
     origin: [
       '*',
-      // 'http://localhost:3000',
-      // 'https://capstone-fe-jamdashmille0530.vercel.app/',
-      // 'https://capstone-4ytyl1cfu-jamdashmille0530.vercel.app/' ,
+      // 'https://capstone-fe-jamdashmille0530.vercel.app',
+      // 'https://capstone-4ytyl1cfu-jamdashmille0530.vercel.app',
+      // 'https://capstone-fe-git-main-jamdashmille0530.vercel.app',
+      // 'https://capstone-fe-wine.vercel.app',
+      // 'https://capstone-fe-jamdashmille0530.vercel.app',
     ],
     credentials: true,
   })
