@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
+    "start": "babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js",
     "admin": "npx run-func admin-init.js adminInit",
     "generate": "prisma generate"
