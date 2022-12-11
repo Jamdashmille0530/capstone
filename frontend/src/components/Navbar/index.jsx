@@ -30,7 +30,7 @@ const Navbar = () => {
               <img
                 src={logolao}
                 alt="Logolo"
-                className="hidden md:flex mt-4 h-12 "
+                className="hidden md:hidden lg:hidden mt-4 h-12 "
               />
             </Link>
           )}
@@ -40,7 +40,7 @@ const Navbar = () => {
               <img
                 src={logolao}
                 alt="Logolo"
-                className="hidden md:flex mt-4 h-12 "
+                className="hidden md:hidden lg:hidden mt-4 h-12 "
               />
             </Link>
           )}
