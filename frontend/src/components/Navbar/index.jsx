@@ -17,6 +17,11 @@ const Navbar = () => {
         <Styles.Container>
           <Link to="/">
             <img src={Logo} alt="Logo" className="hidden md:flex mt-4 h-12 " />
+            <img
+              src={logolao}
+              alt="Logolo"
+              className="md:hidden lg:hidden mt-4 h-12 "
+            />
           </Link>
 
           {auth?.role === 'SCHOLAR' && (
