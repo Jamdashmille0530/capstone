@@ -1,6 +1,7 @@
 import React from 'react'
 import laovid from 'assets/loavid.gif'
 import { useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { addFile } from 'utils/user.route'
 import { useState } from 'react'
 import { AiOutlineDownload } from 'react-icons/ai'
@@ -137,7 +138,8 @@ const Signup = () => {
                   Attach All The Needed Files For Your Application
                 </span>{' '}
                 <span className="text-s text-red-900 text-bo">
-                  Make sure to attach png, jpeg, jpg (ex. FILE_SURNAME_FIRSTNAME)
+                  Make sure to attach png, jpeg, jpg (ex.
+                  FILE_SURNAME_FIRSTNAME)
                 </span>{' '}
               </div>
               <div className="grid md:grid-cols-2">
@@ -149,13 +151,15 @@ const Signup = () => {
               <div className="mt-3 text-right">
                 {' '}
                 <a href="/signuptwo">Back</a>{' '}
-                <button
-                  className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
-                  onClick={alert('You have submitted your application')}
-                  type="submit"
-                >
-                  Submit
-                </button>{' '}
+                <Link to="/">
+                  <button
+                    className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
+                    onClick={alert('You have submitted your application')}
+                    type="submit"
+                  >
+                    Submit
+                  </button>{' '}
+                </Link>
               </div>
             </div>
           </div>
