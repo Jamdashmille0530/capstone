@@ -27,11 +27,21 @@ const Navbar = () => {
           {auth?.role === 'SCHOLAR' && (
             <Link to="/">
               <img src={Logo} alt="Logolao" className="mt-5 h-12 md:hidden" />
+              <img
+                src={logolao}
+                alt="Logolo"
+                className="hidden md:flex mt-4 h-12 "
+              />
             </Link>
           )}
           {auth?.role === 'ADMIN' && (
             <Link to="/">
               <img src={Logo} alt="Logolao" className=" mt-5 h-12 md:hidden" />
+              <img
+                src={logolao}
+                alt="Logolo"
+                className="hidden md:flex mt-4 h-12 "
+              />
             </Link>
           )}
           <Styles.Navlinks>
