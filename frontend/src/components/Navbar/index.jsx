@@ -40,6 +40,9 @@ const Navbar = () => {
                 <Link to="/Login">
                   <Button className="sm:flex-auto">Login</Button>
                 </Link>
+                <Link to="/Chat">
+                  <Button secondary>Chat</Button>
+                </Link>
               </>
             ) : (
               <>
