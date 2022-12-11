@@ -18,12 +18,11 @@ const Navbar = () => {
           <Link to="/">
             <img src={Logo} alt="Logo" className="hidden md:flex mt-4 h-12 " />
           </Link>
-   
+
           {auth?.role === 'SCHOLAR' && (
             <Link to="/">
               <img src={Logo} alt="Logolao" className="mt-5 h-12 md:hidden" />
             </Link>
-            
           )}
           {auth?.role === 'ADMIN' && (
             <Link to="/">
@@ -40,11 +39,6 @@ const Navbar = () => {
                 </Link>
                 <Link to="/Login">
                   <Button className="sm:flex-auto">Login</Button>
-                </Link>
-                <Link to="/Chat">
-                  <Button secondary className="sm:flex-auto">
-                    Chat
-                  </Button>
                 </Link>
               </>
             ) : (
