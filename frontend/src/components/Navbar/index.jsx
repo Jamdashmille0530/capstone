@@ -26,21 +26,29 @@ const Navbar = () => {
 
           {auth?.role === 'SCHOLAR' && (
             <Link to="/">
-              <img src={Logo} alt="Logolao" className="mt-5 h-12 md:hidden" />
+              <img
+                src={Logo}
+                alt="Logolao"
+                className="mt-5 h-12 sm:hidden md:block"
+              />
               <img
                 src={logolao}
                 alt="Logolo"
-                className="hidden md:hidden lg:hidden mt-4 h-12 "
+                className="sm:block md:hidden mt-4 h-12 "
               />
             </Link>
           )}
           {auth?.role === 'ADMIN' && (
             <Link to="/">
-              <img src={Logo} alt="Logolao" className=" mt-5 h-12 md:hidden" />
+              <img
+                src={Logo}
+                alt="Logolao"
+                className=" mt-5 h-12 sm:hidden md:block"
+              />
               <img
                 src={logolao}
                 alt="Logolo"
-                className="sm:hidden md:hidden lg:hidden mt-4 h-12 "
+                className="sm:block md:hidden mt-4 h-12 "
               />
             </Link>
           )}
