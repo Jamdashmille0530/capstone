@@ -15,7 +15,7 @@ const Navbar = () => {
     <>
       <Styles.Wrapper>
         <Styles.Container>
-          {!auth && (
+          
             <Link to="/">
               <img
                 src={Logo}
@@ -28,7 +28,7 @@ const Navbar = () => {
                 className="md:hidden  mt-4 h-12 "
               />
             </Link>
-          )}
+          
 
           {auth?.role === 'ADMIN' && auth?.role === 'SCHOLAR' && (
             <Link to="/">
