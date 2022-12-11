@@ -15,40 +15,32 @@ const Navbar = () => {
     <>
       <Styles.Wrapper>
         <Styles.Container>
-          <Link to="/">
-            <img src={Logo} alt="Logo" className="hidden md:flex mt-4 h-12 " />
-            <img
-              src={logolao}
-              alt="Logolo"
-              className="md:hidden lg:hidden mt-4 h-12 "
-            />
-          </Link>
-
-          {auth?.role === 'SCHOLAR' && (
+          {!auth && (
             <Link to="/">
               <img
                 src={Logo}
-                alt="Logolao"
-                className="mt-5 h-12 sm:hidden md:block"
+                alt="Logo"
+                className="hidden md:flex mt-4 h-12 "
               />
               <img
                 src={logolao}
                 alt="Logolo"
-                className="sm:block md:hidden mt-4 h-12 "
+                className="md:hidden  mt-4 h-12 "
               />
             </Link>
           )}
-          {auth?.role === 'ADMIN' && (
+
+          {auth?.role === 'ADMIN' && auth?.role === 'SCHOLAR' && (
             <Link to="/">
               <img
                 src={Logo}
                 alt="Logolao"
-                className=" mt-5 h-12 sm:hidden md:block"
+                className=" mt-5 h-12 sm:block md:hidden"
               />
               <img
                 src={logolao}
                 alt="Logolo"
-                className="sm:block md:hidden mt-4 h-12 "
+                className="hidden md:hidden mt-4 h-12 "
               />
             </Link>
           )}
