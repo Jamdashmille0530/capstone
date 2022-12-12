@@ -78,7 +78,7 @@ const Input = ({ text, type, placeholder }) => {
                   >
                     role
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
@@ -95,7 +95,7 @@ const Input = ({ text, type, placeholder }) => {
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
                     year
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody>
@@ -137,25 +137,22 @@ const Input = ({ text, type, placeholder }) => {
                       </button>
                     </td> */}
                     {/* --------- ROLE-------- */}
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <div className="mt-1">
-                        {/* <Input type="text" placeholder="Program" /> */}
                         {user.program}
                       </div>
-                    </td>
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    </td> */}
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <div className="mt-1">
-                        {/* <Input type="text" placeholder="School" /> */}
                         {user.school}
                       </div>
-                    </td>
+                    </td> */}
 
-                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <div className="mt-1">
-                        {/* <Input type="text" placeholder="Year" /> */}
                         {user.year}
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>

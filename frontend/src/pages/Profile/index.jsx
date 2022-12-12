@@ -32,22 +32,22 @@ const Profile = () => {
                   <div className="col-sm-4 bg-c-lite-green user-profile">
                     <div className="card-block text-center text-white">
                       <div className=" pb-14  m-b-25">
-                        <img
+                        {/* <img
                           src="https://img.icons8.com/bubbles/100/000000/user.png"
                           class="img-radius w-32 -my-7"
                           alt="User-Profile-Image"
-                        />
+                        /> */}
 
                         <div className="flex justify-around -my-24 -mx-10">
                           <div className="grid grid-cols-none place-items-start text-black">
                             <h1 className="font-bold">
                               Name: {auth?.lname}, {auth?.fname} {auth?.mname}{" "}
                             </h1>
-                            {auth?.role === "SCHOLAR" && (
+                            {/* {auth?.role === "SCHOLAR" && (
                               <h1 className="font-bold">Year: {auth?.year}</h1>
-                            )}
+                            )} */}
                           </div>
-                          {auth?.role === "SCHOLAR" && (
+                          {/* {auth?.role === "SCHOLAR" && (
                             <div className="grid grid-cols-none place-content-center -my-12 text-black">
                               <h1 className="font-bold">
                                 Program: {auth?.program}{" "}
@@ -56,7 +56,7 @@ const Profile = () => {
                                 School: {auth?.school}
                               </h1>
                             </div>
-                          )}
+                          )} */}
                         </div>
                       </div>
                     </div>
