@@ -29,8 +29,8 @@
     .chatsidebar {
       flex: 1;
       background-color: grey;
-      overflow: hidden;
       position: relative;
+      overflow: scroll;
 
       .chatnavbar {
         display: flex;
@@ -195,7 +195,7 @@
 
             .messageContent {
               align-items: flex-end;
-              
+
               p {
                 background-color: white;
                 color: black;
