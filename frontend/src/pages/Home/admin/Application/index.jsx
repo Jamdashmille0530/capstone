@@ -300,25 +300,24 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
-                        onClick={swal({
-                          title: 'Are you sure?',
-                          text: 'Once accepted, you will not be able to undo this action!',
-                          icon: 'warning',
-                          buttons: true,
-                          dangerMode: true,
-                        }).then((willDelete) => {
-                        
-                          if (willDelete) {
-                              async () => {
-                                await acceptApplicant(user.id, user.email)
-                              }
-                            swal('Accepted, sent to email', {
-                              icon: 'success',
-                            })
-                          } else {
-                            swal('We can try again next time')
-                          }
-                        })}
+                        onClick={async () => {
+                          swal({
+                            title: 'Are you sure?',
+                            text: 'Once accepted, you will not be able to undo this action!',
+                            icon: 'warning',
+                            buttons: true,
+                            dangerMode: true,
+                          }).then(async (willDelete) => {
+                            if (willDelete) {
+                              await acceptApplicant(user.id, user.email)
+                              swal('Accepted, sent to email', {
+                                icon: 'success',
+                              })
+                            } else {
+                              swal('We can try again next time')
+                            }
+                          })
+                        }}
                       >
                         Approved
                       </button>
