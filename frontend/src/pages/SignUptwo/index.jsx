@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import laovid from 'assets/loavid.gif'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-
+import Signup from 'pages/Signup'
 const schema = yup.object().shape({
   fname: yup.string().required('First Name is Required'),
   mname: yup.string().required('Middle Name is Required'),
@@ -107,12 +107,11 @@ const Signup = () => {
                   <div className="mt-3 text-right">
                     {' '}
                     <a href="/">Cancel</a>{' '}
-                    <button
-                      className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
-                      onClick={alert('You have submitted your application')}
-                    >
-                      Next
-                    </button>{' '}
+                    <Link to="/Signup">
+                      <button className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900">
+                        Next
+                      </button>{' '}
+                    </Link>
                   </div>
                 </div>
               </div>
