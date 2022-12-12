@@ -323,25 +323,26 @@ const Application = () => {
                       </button>
 
                       <button
-                        className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-red-300 rounded-lg hover:bg-gray-400 "
+                        className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
-                            swal({
-                              title: 'Are you sure?',
-                              text: 'Once declined, you will not be able to undo this action!',
-                              icon: 'warning',
-                              buttons: true,
-                              dangerMode: true,
-                            }).then(async (willDelete) => {
-                              if (willDelete) {
-                                await rejectApplicant(user.id, user.email)
-                                swal('Declined, sent to email', {
-                                  icon: 'success',
-                                })
-                              } else {
-                                swal('We can try again next time')
-                              }
-                            })
+                          swal({
+                            title: 'Are you sure?',
+                            text: 'Once declined, you will not be able to undo this action!',
+                            icon: 'warning',
+                            buttons: true,
+                            dangerMode: true,
+                          }).then(async (willDelete) => {
+                            if (willDelete) {
+                              await rejectApplicant(user.id, user.email)
+                              swal('Declined, sent to email', {
+                                icon: 'success',
+                              })
+                            } else {
+                              swal('We can try again next time')
+                            }
+                          })
                         }}
+                        
                       >
                         Decline
                       </button>
