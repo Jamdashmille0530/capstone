@@ -307,8 +307,8 @@ const Application = () => {
                             icon: 'warning',
                             buttons: true,
                             dangerMode: true,
-                          }).then(async (willDelete) => {
-                            if (willDelete) {
+                          }).then(async (willAccept) => {
+                            if (willAccept) {
                               await acceptApplicant(user.id, user.email)
                               swal('Accepted, sent to email', {
                                 icon: 'success',
