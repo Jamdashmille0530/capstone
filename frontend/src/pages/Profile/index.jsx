@@ -16,6 +16,7 @@ import { getUser, me } from "utils/user.route";
 import { useContext } from "react";
 import AuthContext from "context/AuthProvider";
 import laovid from "assets/loavid.gif";
+import logo2 from 'assets/logolao.png'
 // import Calendar from "react-calendar";
 const Profile = () => {
   const [date, setDate] = useState(new Date());
@@ -33,7 +34,7 @@ const Profile = () => {
                     <div className="card-block text-center text-white">
                       <div className=" pb-14  m-b-25">
                         <img
-                          src="https://img.icons8.com/bubbles/100/000000/user.png"
+                          src={logo2}
                           class="img-radius w-32 -my-7"
                           alt="User-Profile-Image"
                         />
