@@ -301,7 +301,7 @@ const Application = () => {
                       <button
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
-                               
+                                await acceptApplicant(user.id, user.email)
 
                           swal({
                             title: 'Are you sure?',
@@ -309,14 +309,11 @@ const Application = () => {
                             icon: 'warning',
                             buttons: true,
                             dangerMode: true,
-                          }).then((willDelete) => {
-                            
-                            if (willDelete) {
-                        
+                          }).then((acceptApplicant) => {
+                            if (acceptApplicant) {
                               swal('Accepted, sent to email', {
                                 icon: 'success',
                               })
-                               await acceptApplicant(user.id, user.email)
                             } else {
                               swal('We can try again next time')
                             }
