@@ -107,11 +107,11 @@ const Signuptwo = () => {
                   <div className="mt-3 text-right">
                     {' '}
                     <a href="/">Cancel</a>{' '}
-                    <Link to="/signup">
+                    
                       <button className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900">
                         Next
                       </button>{' '}
-                    </Link>
+                    
                   </div>
                 </div>
               </div>
