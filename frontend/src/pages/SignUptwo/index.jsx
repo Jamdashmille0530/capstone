@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   address: yup.string().required('Please enter an Address'),
 })
 
-const Signup = () => {
+const Signuptwo = () => {
   const {
     register,
     handleSubmit,
@@ -124,4 +124,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Signuptwo
