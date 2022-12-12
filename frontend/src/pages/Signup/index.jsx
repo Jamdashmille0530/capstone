@@ -8,7 +8,6 @@ import { AiOutlineDownload } from 'react-icons/ai'
 import { storage } from 'pages/firebase'
 import { ref, uploadBytes } from 'firebase/storage'
 import { v4 } from 'uuid'
-import swal from 'sweetalert'
 
 const requirements = [
   {
@@ -155,12 +154,7 @@ const Signup = () => {
                 <Link to="/">
                   <button
                     className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
-                    onClick={swal({
-                      title: 'Good job!',
-                      text: 'You submitted',
-                      icon: 'success',
-                      button: 'ok',
-                    })}
+                    
                     type="submit"
                   >
                     Submit

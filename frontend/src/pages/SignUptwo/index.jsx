@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   address: yup.string().required('Please enter an Address'),
 })
 
-const Signuptwo = () => {
+const Signup = () => {
   const {
     register,
     handleSubmit,
@@ -109,11 +109,7 @@ const Signuptwo = () => {
                     <a href="/">Cancel</a>{' '}
                     <button
                       className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
-                      onClick={swal({
-
-                        button: 'ok',
-                      })}
-                      
+                      onClick={alert('You have submitted your application')}
                     >
                       Next
                     </button>{' '}
@@ -131,4 +127,4 @@ const Signuptwo = () => {
   )
 }
 
-export default Signuptwo
+export default Signup
