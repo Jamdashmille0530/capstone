@@ -115,7 +115,7 @@ export const rejectApplicant = async (req, res, next) => {
       {
         from: 'lao.noreply@gmail.com',
         to: email,
-        subject: 'Rejected',
+        subject: 'Better luck next time!',
         html: `
         <b>Thank you for your scholarship application, unfortunately, we had a large number of applicants, and we regret to inform you that you have not been selected as a scholar.
 
