@@ -300,7 +300,8 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
-                        onClick={async () => 
+                        onClick={async () => {
+                                
 
                           swal({
                             title: 'Are you sure?',
@@ -311,18 +312,18 @@ const Application = () => {
                           }).then((willDelete) => {
                             
                             if (willDelete) {
-                        
-                              {
-                                await acceptApplicant(user.id, user.email)
-                              
-                              swal('Accepted, sent to email', {
+                              const deleteNow = await acceptApplicant(user.id, user.email)
+                              if (deleteNow){
+                                  swal('Accepted, sent to email', {
                                 icon: 'success',
-                              })}
+                              })
+                              }
+                            
                             } else {
                               swal('We can try again next time')
                             }
                           })
-                        }
+                        }}
                       >
                         Approved
                       </button>
