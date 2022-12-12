@@ -5,7 +5,7 @@ export const Search = () => {
   return (
     <div className="search">
       <div className="searchForm">
-        <input type="text" placeholder="Search a User" />
+        <input type="text" placeholder=" " />
       </div>
       <div className="userChat">
        
