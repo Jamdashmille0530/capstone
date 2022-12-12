@@ -323,7 +323,7 @@ const Application = () => {
                       </button>
 
                       <button
-                        className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
+                        className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-red-300 rounded-lg hover:bg-gray-400"
                         onClick={async () => {
                           swal({
                             title: 'Are you sure?',
@@ -342,7 +342,6 @@ const Application = () => {
                             }
                           })
                         }}
-                        
                       >
                         Decline
                       </button>
