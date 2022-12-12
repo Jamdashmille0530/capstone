@@ -107,7 +107,14 @@ const Signuptwo = () => {
                   <div className="mt-3 text-right">
                     {' '}
                     <a href="/">Cancel</a>{' '}
-                    <button className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900">
+                    <button
+                      className="ml-2 h-10 w-32 bg-green-700 rounded text-white hover:bg-green-900"
+                      onClick={swal({
+
+                        button: 'ok',
+                      })}
+                      
+                    >
                       Next
                     </button>{' '}
                   </div>
@@ -117,7 +124,7 @@ const Signuptwo = () => {
           </div>
         </form>
         <div className="hidden md:flex pl-2">
-          <img  src={laovid} />
+          <img src={laovid} />
         </div>
       </div>
     </>
