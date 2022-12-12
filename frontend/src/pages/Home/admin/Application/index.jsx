@@ -301,22 +301,8 @@ const Application = () => {
                       <button
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
-                          swal({
-                            title: 'Are you sure?',
-                            text: 'Once accepted, you will not be able to undo this action!',
-                            icon: 'warning',
-                            buttons: true,
-                            dangerMode: true,
-                          }).then(async (willAccept) => {
-                            if (willAccept) {
-                              await acceptApplicant(user.id, user.email)
-                              swal('Accepted, sent to email', {
-                                icon: 'success',
-                              })
-                            } else {
-                              swal('We can try again next time')
-                            }
-                          })
+                          await acceptApplicant(user.id, user.email)
+                          alert('Approved, sent to email')
                         }}
                       >
                         Approved
