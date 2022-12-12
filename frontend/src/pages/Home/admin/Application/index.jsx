@@ -1,6 +1,7 @@
 import { TextField } from '@material-ui/core'
 import React from 'react'
-
+import Modal from 'components/Modal/Modal'
+import swal from 'sweetalert'
 import {
   getAllUserInfo,
   updateUserRole,
@@ -19,6 +20,7 @@ const Application = () => {
   const userApplication = users.filter(
     (user) => user.role === 'APPLICANT' 
   )
+  
 
   const Input = ({ text, type, placeholder }) => {
     return (
@@ -303,11 +305,30 @@ const Application = () => {
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
                           await acceptApplicant(user.id, user.email)
-                          alert('Accepted, sent to email')
+                          swal('Accepted, sent to email')
                         }}
                       >
-                        Accept
+                        Approved
                       </button>
+                      {/* acceptApplicant = () => {
+              
+                     swal({
+                        title: "Are you sure?",
+                        text: "Once accepted, you will not be able to undo this action!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                        }).then((willDelete) => {
+                          if (willDelete) {
+                            swal("Accepted, sent to email", {
+                              icon: "success",
+                            });
+                          } else {
+                            swal("We can try again next time");
+                          }
+                        })
+                        } */}
+
                       <button
                         className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-red-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
@@ -315,7 +336,7 @@ const Application = () => {
                           alert('Rejected, sent to email')
                         }}
                       >
-                        Reject
+                        Decline
                       </button>
                     </td>
                   </tr>
