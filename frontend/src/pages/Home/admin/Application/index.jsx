@@ -17,10 +17,7 @@ const Application = () => {
     return <div>Loading...</div>
   }
 
-  const userApplication = users.filter(
-    (user) => user.role === 'APPLICANT' 
-  )
-  
+  const userApplication = users.filter((user) => user.role === 'APPLICANT')
 
   const Input = ({ text, type, placeholder }) => {
     return (
@@ -305,29 +302,26 @@ const Application = () => {
                         className="px-3 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
                         onClick={async () => {
                           await acceptApplicant(user.id, user.email)
-                          swal('Accepted, sent to email')
+
+                          swal({
+                            title: 'Are you sure?',
+                            text: 'Once accepted, you will not be able to undo this action!',
+                            icon: 'warning',
+                            buttons: true,
+                            dangerMode: true,
+                          }).then((willDelete) => {
+                            if (willDelete) {
+                              swal('Accepted, sent to email', {
+                                icon: 'success',
+                              })
+                            } else {
+                              swal('We can try again next time')
+                            }
+                          })
                         }}
                       >
                         Approved
                       </button>
-                      {/* acceptApplicant = () => {
-              
-                     swal({
-                        title: "Are you sure?",
-                        text: "Once accepted, you will not be able to undo this action!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                        }).then((willDelete) => {
-                          if (willDelete) {
-                            swal("Accepted, sent to email", {
-                              icon: "success",
-                            });
-                          } else {
-                            swal("We can try again next time");
-                          }
-                        })
-                        } */}
 
                       <button
                         className="ml-2 px-3 py-2 mt-4 border-green-700 text-black bg-red-300 rounded-lg hover:bg-gray-400 "
