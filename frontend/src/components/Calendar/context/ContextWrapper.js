@@ -19,7 +19,7 @@ export default function ContextWrapper(props) {
     endDate.setDate(1)
 
     getEvent(startdate.getTime(), endDate.getTime())
-      .then((response) => setSavedEvents(response.data))
+      .then((response) => setSavedEvents(response?.data?.event))
       .catch(() => setSavedEvents([]))
   }, [monthIndex, setSavedEvents])
 
@@ -30,9 +30,9 @@ export default function ContextWrapper(props) {
   const filteredEvents = useMemo(() => {
     return savedEvents.filter((evt) =>
       labels
-        .filter((lbl) => lbl.checked)
-        .map((lbl) => lbl.label)
-        .includes(evt.label)
+        .filter((lbl) => lbl?.checked)
+        .map((lbl) => lbl?.label)
+        .includes(evt?.label)
     )
   }, [savedEvents, labels])
 
