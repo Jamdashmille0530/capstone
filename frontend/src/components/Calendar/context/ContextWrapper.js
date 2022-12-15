@@ -28,11 +28,15 @@ export default function ContextWrapper(props) {
   }, [monthIndex])
 
   const filteredEvents = useMemo(() => {
-    return savedEvents.filter((evt) =>
-      labels
-        .filter((lbl) => lbl?.checked)
-        .map((lbl) => lbl?.label)
-        .includes(evt?.label)
+    console.log(savedEvents, labels)
+    return (
+      savedEvents?.filter(
+        (evt) =>
+          !!labels
+            ?.filter((lbl) => lbl?.checked)
+            .map((lbl) => lbl?.label)
+            .includes(evt?.label)
+      ) ?? []
     )
   }, [savedEvents, labels])
 
