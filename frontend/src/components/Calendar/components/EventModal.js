@@ -1,49 +1,42 @@
-import AuthContext from "context/AuthProvider";
-import React, { useContext, useState } from "react";
-import { addEvent, deleteEvent } from "utils/calendar.routes";
-import GlobalContext from "../context/GlobalContext";
+import AuthContext from 'context/AuthProvider'
+import React, { useContext, useState } from 'react'
+import { addEvent, deleteEvent } from 'utils/calendar.routes'
+import GlobalContext from '../context/GlobalContext'
 
-const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
+const labelsClasses = ['indigo', 'gray', 'green', 'blue', 'red', 'purple']
 
 export default function EventModal() {
-  const { setShowEventModal, daySelected, dispatchCalEvent, selectedEvent } =
-    useContext(GlobalContext);
+  const { setShowEventModal, daySelected, selectedEvent } =
+    useContext(GlobalContext)
 
-  const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");
+  const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : '')
   const [description, setDescription] = useState(
-    selectedEvent ? selectedEvent.description : ""
-  );
+    selectedEvent ? selectedEvent.description : ''
+  )
   const [selectedLabel, setSelectedLabel] = useState(
     selectedEvent
       ? labelsClasses.find((lbl) => lbl === selectedEvent.label)
       : labelsClasses[0]
-  );
+  )
 
-  const { auth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext)
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const calendarEvent = {
       title,
       description,
       label: selectedLabel,
       day: daySelected.valueOf(),
       id: selectedEvent ? selectedEvent.id : Date.now(),
-    };
-    addEvent({ ...calendarEvent, id: calendarEvent.id.toString() });
-
-    if (selectedEvent) {
-      dispatchCalEvent({ type: "update", payload: calendarEvent });
-    } else {
-      dispatchCalEvent({ type: "push", payload: calendarEvent });
     }
-
-    setShowEventModal(false);
+    addEvent({ ...calendarEvent, id: calendarEvent.id.toString() })
+    setShowEventModal(false)
   }
 
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
-      {auth?.role !== "ADMIN" ? (
+      {auth?.role !== 'ADMIN' ? (
         <div className="bg-white rounded-lg shadow-2xl w-1/4">
           <header className="bg-gray-100 px-4 py-2 flex justify-between items-center">
             <button onClick={() => setShowEventModal(false)}>
@@ -64,13 +57,9 @@ export default function EventModal() {
               {selectedEvent && (
                 <span
                   onClick={() => {
-                    dispatchCalEvent({
-                      type: "delete",
-                      payload: selectedEvent,
-                    });
-                    deleteEvent(selectedEvent.id);
+                    deleteEvent(selectedEvent.id)
 
-                    setShowEventModal(false);
+                    setShowEventModal(false)
                   }}
                   className="material-icons-outlined text-gray-400 cursor-pointer"
                 >
@@ -99,7 +88,7 @@ export default function EventModal() {
               <span className="material-icons-outlined text-gray-400">
                 schedule
               </span>
-              <p>{daySelected.format("dddd, MMMM DD")}</p>
+              <p>{daySelected.format('dddd, MMMM DD')}</p>
               <span className="material-icons-outlined text-gray-400">
                 segment
               </span>
@@ -144,5 +133,5 @@ export default function EventModal() {
         </form>
       )}
     </div>
-  );
+  )
 }
