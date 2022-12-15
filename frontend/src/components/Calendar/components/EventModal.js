@@ -6,7 +6,7 @@ import GlobalContext from '../context/GlobalContext'
 const labelsClasses = ['indigo', 'gray', 'green', 'blue', 'red', 'purple']
 
 export default function EventModal() {
-  const { setShowEventModal, daySelected, selectedEvent } =
+  const { setShowEventModal, daySelected, selectedEvent, retrieveEvents } =
     useContext(GlobalContext)
 
   const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : '')
@@ -21,7 +21,7 @@ export default function EventModal() {
 
   const { auth } = useContext(AuthContext)
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     const calendarEvent = {
       title,
@@ -30,8 +30,10 @@ export default function EventModal() {
       day: daySelected.valueOf(),
       id: selectedEvent ? selectedEvent.id : Date.now(),
     }
-    addEvent({ ...calendarEvent, id: calendarEvent.id.toString() })
-    setShowEventModal(false)
+    addEvent({ ...calendarEvent, id: calendarEvent.id.toString() }).then(() => {
+      retrieveEvents()
+      setShowEventModal(false)
+    })
   }
 
   return (
@@ -57,9 +59,10 @@ export default function EventModal() {
               {selectedEvent && (
                 <span
                   onClick={() => {
-                    deleteEvent(selectedEvent.id)
-
-                    setShowEventModal(false)
+                    deleteEvent(selectedEvent.id).then(() => {
+                      retrieveEvents()
+                      setShowEventModal(false)
+                    })
                   }}
                   className="material-icons-outlined text-gray-400 cursor-pointer"
                 >

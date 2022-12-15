@@ -3,7 +3,7 @@ import { api } from './axios'
 export const addEvent = async (data) => {
   const token = localStorage.getItem('accessToken')
 
-  await api.post('/api/calendar/add', data, {
+  return await api.post('/api/calendar/add', data, {
     headers: { Authorization: `Bearer ${token}` },
   })
 }
