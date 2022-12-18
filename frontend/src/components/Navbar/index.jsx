@@ -115,7 +115,13 @@ const Navbar = () => {
                               <a href="/application">Application</a>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
-                              <a href="/student">SCholars</a>
+                              <a href="/student">Scholars</a>
+                            </li>
+                            <li className="border-b border-gray-400 my-8 uppercase">
+                              <a href="/student">Graduated</a>
+                            </li>
+                            <li className="border-b border-gray-400 my-8 uppercase">
+                              <a href="/student">Removed</a>
                             </li>
                             <Button onClick={() => logout(auth?.id)}>
                               logout

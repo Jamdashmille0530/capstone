@@ -125,6 +125,18 @@ const Application = () => {
                   >
                     role
                   </th>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
+                  >
+                    Initial Status
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
+                  >
+                    Pending
+                  </th>
                   {/* <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left "
@@ -240,6 +252,10 @@ const Application = () => {
                     {/* --------- ROLE-------- */}
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.role}
+                    </td>
+
+                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                      BUTTON FOR INITIAL
                     </td>
                     {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
