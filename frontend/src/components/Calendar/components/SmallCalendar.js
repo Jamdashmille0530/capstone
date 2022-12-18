@@ -1,39 +1,40 @@
-import dayjs from "dayjs";
-import React, { useContext, useEffect, useState } from "react";
-import GlobalContext from "../context/GlobalContext";
-import { getMonth } from "../util";
+import dayjs from 'dayjs'
+import React, { useContext, useEffect, useState } from 'react'
+import GlobalContext from '../context/GlobalContext'
+import { getMonth } from '../util'
 
 export default function SmallCalendar() {
-  const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
-  const [currentMonth, setCurrentMonth] = useState(getMonth());
-  useEffect(() => {
-    setCurrentMonth(getMonth(currentMonthIdx));
-  }, [currentMonthIdx]);
+  const [currentMonth, setCurrentMonth] = useState(getMonth())
 
-  const { monthIndex, setSmallCalendarMonth, setDaySelected, daySelected } =
-    useContext(GlobalContext);
+  const {
+    monthIndex,
+    setMonthIndex,
+    setSmallCalendarMonth,
+    setDaySelected,
+    daySelected,
+  } = useContext(GlobalContext)
 
   useEffect(() => {
-    setCurrentMonthIdx(monthIndex);
-  }, [monthIndex]);
+    setCurrentMonth(getMonth(monthIndex))
+  }, [monthIndex])
 
   function handlePrevMonth() {
-    setCurrentMonthIdx(currentMonthIdx - 1);
+    setMonthIndex((d) => d - 1)
   }
   function handleNextMonth() {
-    setCurrentMonthIdx(currentMonthIdx + 1);
+    setMonthIndex((d) => d + 1)
   }
   function getDayClass(day) {
-    const format = "DD-MM-YY";
-    const nowDay = dayjs().format(format);
-    const currDay = day.format(format);
-    const slcDay = daySelected && daySelected.format(format);
+    const format = 'DD-MM-YY'
+    const nowDay = dayjs().format(format)
+    const currDay = day.format(format)
+    const slcDay = daySelected && daySelected.format(format)
     if (nowDay === currDay) {
-      return "bg-blue-500 rounded-full text-white";
+      return 'bg-blue-500 rounded-full text-white'
     } else if (currDay === slcDay) {
-      return "bg-blue-100 rounded-full text-blue-600 font-bold";
+      return 'bg-blue-100 rounded-full text-blue-600 font-bold'
     } else {
-      return "";
+      return ''
     }
   }
   return (
@@ -41,9 +42,7 @@ export default function SmallCalendar() {
       <div className="mt-9">
         <header className="flex justify-between">
           <p className="text-gray-500 font-bold">
-            {dayjs(new Date(dayjs().year(), currentMonthIdx)).format(
-              'MMMM YYYY'
-            )}
+            {dayjs(new Date(dayjs().year(), monthIndex)).format('MMMM YYYY')}
           </p>
           <div>
             <button onClick={handlePrevMonth}>
@@ -70,7 +69,7 @@ export default function SmallCalendar() {
                 <button
                   key={idx}
                   onClick={() => {
-                    setSmallCalendarMonth(currentMonthIdx)
+                    setSmallCalendarMonth(monthIndex)
                     setDaySelected(day)
                   }}
                   className={`py-1 w-full ${getDayClass(day)}`}
