@@ -15,20 +15,10 @@ const Navbar = () => {
     <>
       <Styles.Wrapper>
         <Styles.Container>
-          
-            <Link to="/">
-              <img
-                src={Logo}
-                alt="Logo"
-                className="hidden md:flex mt-4 h-12 "
-              />
-              <img
-                src={logolao}
-                alt="Logolo"
-                className="md:hidden  mt-4 h-12 "
-              />
-            </Link>
-          
+          <Link to="/">
+            <img src={Logo} alt="Logo" className="hidden md:flex mt-4 h-12 " />
+            <img src={logolao} alt="Logolo" className="md:hidden  mt-4 h-12 " />
+          </Link>
 
           {auth?.role === 'ADMIN' && auth?.role === 'SCHOLAR' && (
             <Link to="/">
@@ -122,6 +112,9 @@ const Navbar = () => {
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
                               <a href="/student">Removed</a>
+                            </li>
+                            <li className="border-b border-gray-400 my-8 uppercase">
+                              <a href="/History">Admin Logs</a>
                             </li>
                             <Button onClick={() => logout(auth?.id)}>
                               logout

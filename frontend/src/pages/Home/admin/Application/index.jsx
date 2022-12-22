@@ -38,6 +38,9 @@ const Application = () => {
       <div className="overflow-x-auto lg:-mx-11 ">
         <div className="py-2 inline-block lg:px-8 ">
           <div className=" border-b border-black lg:px-8 ">
+            <h1 className="text-2xl font-bold text-center text-black font-serif mt-24 mb-9 p-4 border-solid border-2 border-green-800">
+              Applicants
+            </h1>
             <table className="table table-striped border-separate border-spacing-2 border border-slate-400  shadow overflow-hidden ">
               <thead className=" bg-green-400 text-green-500">
                 <tr>
@@ -255,8 +258,28 @@ const Application = () => {
                     </td>
 
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      BUTTON FOR INITIAL
-                    </td>
+                      <button
+                      onClick={
+                        swal({
+                          title: 'Are you sure?',
+                          text: 'Once accepted, you will not be able to undo this action!',
+                          icon: 'warning',
+                          buttons: true,
+                          dangerMode: true,
+                        }).then((willPassInitial) => {
+                          if (willPassInitial) {
+                            
+                            swal('Accepted, sent to email', {
+                              icon: 'success',
+                            })
+                          } else {
+                            swal('We can try again next time')
+                          }
+                        })
+                      }
+                      
+                      >Initial</button>
+                      </td>
                     {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
                         className="px-6 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
@@ -335,7 +358,7 @@ const Application = () => {
                           })
                         }}
                       >
-                        Approved
+                        Approve
                       </button>
 
                       <button

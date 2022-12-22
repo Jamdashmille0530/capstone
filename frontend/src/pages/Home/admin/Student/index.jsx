@@ -31,6 +31,9 @@ const Input = ({ text, type, placeholder }) => {
     <div className="flex justify-center min-h-screen mt-7">
       <div className="overflow-x-auto lg:-mx-11 ">
         <div className="py-2 inline-block lg:px-8 ">
+          <h1 className="text-2xl font-bold text-center text-black font-serif mt-24 mb-9 p-4 border-solid border-2 border-green-800">
+            Scholar
+          </h1>
           <div className=" border-b border-black lg:px-8 ">
             <table className="table table-striped border-separate border-spacing-2 border border-slate-400  shadow overflow-hidden ">
               <thead className=" bg-green-400 text-green-500">
@@ -78,7 +81,7 @@ const Input = ({ text, type, placeholder }) => {
                   >
                     role
                   </th>
-                  {/* <th
+                  <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
@@ -95,7 +98,7 @@ const Input = ({ text, type, placeholder }) => {
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
                     year
-                  </th> */}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -137,22 +140,16 @@ const Input = ({ text, type, placeholder }) => {
                       </button>
                     </td> */}
                     {/* --------- ROLE-------- */}
-                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      <div className="mt-1">
-                        {user.program}
-                      </div>
-                    </td> */}
-                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      <div className="mt-1">
-                        {user.school}
-                      </div>
-                    </td> */}
+                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                      <div className="mt-1">{user.program}</div>
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                      <div className="mt-1">{user.school}</div>
+                    </td>
 
-                    {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
-                      <div className="mt-1">
-                        {user.year}
-                      </div>
-                    </td> */}
+                    <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
+                      <div className="mt-1">{user.year}</div>
+                    </td>
                   </tr>
                 ))}
               </tbody>

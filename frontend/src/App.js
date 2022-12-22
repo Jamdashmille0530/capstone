@@ -15,6 +15,7 @@ import AdminChat from 'pages/Home/admin/adminChat'
 import Application from 'pages/Home/admin/Application'
 import Scholar from 'pages/Home/admin/Scholar'
 import Student from 'pages/Home/admin/Student'
+import History from 'pages/Home/admin/History'
 
 import { SWRConfig } from 'swr'
 import { fetcher } from 'utils/fetcher'
@@ -55,6 +56,14 @@ function App() {
           <Route path="/dashy" element={<Dashy />} />
           <Route
             path="/admin"
+            element={
+              <Protected isLoggedIn={auth?.role === 'ADMIN'}>
+                <Admin />
+              </Protected>
+            }
+          />
+          <Route
+            path="/History"
             element={
               <Protected isLoggedIn={auth?.role === 'ADMIN'}>
                 <Admin />
