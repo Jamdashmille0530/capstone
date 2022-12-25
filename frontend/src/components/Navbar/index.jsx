@@ -108,10 +108,7 @@ const Navbar = () => {
                               <a href="/student">Scholars</a>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
-                              <a href="/student">Graduated</a>
-                            </li>
-                            <li className="border-b border-gray-400 my-8 uppercase">
-                              <a href="/student">Removed</a>
+                              <a href="/History">Student History</a>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
                               <a href="/History">Admin Logs</a>
