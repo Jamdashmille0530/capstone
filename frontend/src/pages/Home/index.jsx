@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
-import * as Style from "./styles";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
-import Lao1 from "assets/lao1.PNG";
-import Lao2 from "assets/lao2.PNG";
-import Lao3 from "assets/lao3.PNG";
-import Lao4 from "assets/lao4.PNG";
-import Apply from "assets/apply.png";
-import Submit from "assets/submit.png";
-import Fill from "assets/fillout.png";
-import Signup from "assets/applyRegister_Black.png";
-import AuthContext from "context/AuthProvider";
+import React, { useContext } from 'react'
+import * as Style from './styles'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import { Link } from 'react-router-dom'
+import Lao1 from 'assets/lao1.PNG'
+import Lao2 from 'assets/lao2.PNG'
+import Lao3 from 'assets/lao3.PNG'
+import Lao4 from 'assets/lao4.PNG'
+import Apply from 'assets/apply.png'
+import Submit from 'assets/submit.png'
+import Fill from 'assets/fillout.png'
+import Signup from 'assets/applyRegister_Black.png'
+import AuthContext from 'context/AuthProvider'
 
-import { getAllUserWithoutPass } from "utils/user.route";
+import { getAllUserWithoutPass } from 'utils/user.route'
 
 const Profile = () => {
   const responsive = {
@@ -29,7 +29,7 @@ const Profile = () => {
       breakpoint: { max: 464, min: 0 },
       items: 1,
     },
-  };
+  }
 
   const picture = [
     {
@@ -48,9 +48,9 @@ const Profile = () => {
       id: 4,
       photo: Lao4,
     },
-  ];
+  ]
 
-  const { auth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext)
 
   return (
     <>
@@ -302,6 +302,6 @@ const Profile = () => {
       </div>
     </>
   )
-};
+}
 
-export default Profile;
+export default Profile

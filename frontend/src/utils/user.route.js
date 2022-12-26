@@ -27,6 +27,10 @@ export const getUser = (id) => {
 export const updateUser = async (data) =>
   await api.post('/api/user/updateUser', data)
 
+// para sa school, year, program
+export const updateUserForTable = async (id, data) =>
+  await api.put(`/api/user/${id}`, data)
+
 export const me = (token) => {
   const { data, error } = useSWR(['/api/user/me', token], withToken)
 

@@ -54,31 +54,31 @@ const Application = () => {
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
-                    firstName
+                    First Name
                   </th>
                   <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
-                    middleName
+                    Middle Name
                   </th>
                   <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
-                    lastName
+                    Last Name
                   </th>
                   <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-1 text-left border border-slate-300"
                   >
-                    email
+                    Email
                   </th>
                   <th
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
-                    address
+                    Address
                   </th>
                   {/* <th
                     scope="col"
@@ -126,7 +126,7 @@ const Application = () => {
                     scope="col"
                     className="text-sm font-medium text-gray-900 px-2 py-3 text-left border border-slate-300"
                   >
-                    role
+                    Role
                   </th>
                   <th
                     scope="col"
@@ -256,7 +256,7 @@ const Application = () => {
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       {user.role}
                     </td>
-
+                    {/* 
                     <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
                       onClick={
@@ -279,7 +279,7 @@ const Application = () => {
                       }
                       
                       >Initial</button>
-                      </td>
+                      </td> */}
                     {/* <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap">
                       <button
                         className="px-6 py-2 mt-4 border-green-700 text-black bg-green-300 rounded-lg hover:bg-gray-400 "
